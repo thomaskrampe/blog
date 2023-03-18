@@ -3,6 +3,12 @@ layout: post
 title: Beispiel Artikel 
 description: >
   Das ist ein Beispiel Artikel.
+image: 
+  path: /assets/img/article/beispiel_artikel_1920x960.png
+  srcset:
+    1060w: /assets/img/article/beispiel_artikel_1920x960.png
+    530w:  /assets/img/article/beispiel_artikel@0,5.png
+    265w:  /assets/img/blog/beispiel_artikel@0,25x.png
 sitemap: false
 hide_last_modified: false
 ---
