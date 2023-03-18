@@ -11,7 +11,8 @@ redirect_from:
 
 # About me
 
-![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-300x200.png){loading="lazy"}
+![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-300x200.png)
+{loading="lazy"}
 
 Thomas Krampe
 {:.figcaption}
