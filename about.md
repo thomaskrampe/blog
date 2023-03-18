@@ -11,7 +11,7 @@ redirect_from:
 
 # About me
 
-[![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-720x480.jpg){:.lead width="200" height="300" loading="lazy"}][resume]{:.no-hover.no-mark}
+[![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-300x200.png){:.lead width="200" height="300" loading="lazy"}][resume]{:.no-hover.no-mark}
 
 Thomas Krampe
 {:.figcaption}
