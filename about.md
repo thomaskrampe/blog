@@ -2,8 +2,8 @@
 layout: about
 image: /assets/img/blog/hydejack-9.jpg
 description: >
-  A boutique Jekyll theme for hackers, nerds, and academics,
-  with a focus on personal sites that are meant to impress.
+  Ich verstehe geschäftliche Anforderungen und übersetze sie in erfolgreiche
+  technische Konzepte, Entwürfe und Implementierungen.
 hide_description: true
 redirect_from:
   - /download/
@@ -13,31 +13,18 @@ redirect_from:
 
 <!--author-->
 
-## Mission
-Neue Technologien kommen und gehen, viele werden schnell wieder vergessen doch einige wenige bleiben auf Dauer erhalten. In vielen Unternehmen ist es einfach nicht möglich, jede neue Technologie zu evaluieren und auf einen sinnvollen und gewinnbringenden Einsatz im Geschäftsprozess zu überprüfen. Oftmals bringt auch nur eine bestimmte Kombination von unterschiedlichen Technologien und Prozessen den entscheidenen Vorteil und führt somit auch zum gewünschten Erfolg. In Vorträgen, Whitepapern und Artikeln stelle ich viele dieser neuen Technolgien in Zusammenhang mit den meisten im Business vorhandenen Prozessen und gebe ihnen damit vielleicht einen besseren Ausgangspunkt oder eine Idee für ihre Entscheidung zur Investitionen in diese neuen Technologien.
-
-A boutique Jekyll theme for hackers, nerds, and academics.  
-{:.lead}
-
 1. this list will be replaced by the toc
 {:toc .large-only}
 
-![Screenshot](assets/img/blog/hydejack-9.jpg){:.lead width="1920" height="1080" loading="lazy"}
-
-Hydejack's cover page on a variety of screen sizes.
-{:.figcaption}
-
-
-**Hydejack** is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress. 
-
-It includes a blog that is suitable for both prose and technical documentation, a portfolio to showcase your projects, and a resume template that looks amazing on the web and in print.
+## Mission
+Neue Technologien kommen und gehen, viele werden schnell wieder vergessen doch einige wenige bleiben auf Dauer erhalten. In vielen Unternehmen ist es einfach nicht möglich, jede neue Technologie zu evaluieren und auf einen sinnvollen und gewinnbringenden Einsatz im Geschäftsprozess zu überprüfen. Oftmals bringt auch nur eine bestimmte Kombination von unterschiedlichen Technologien und Prozessen den entscheidenen Vorteil und führt somit auch zum gewünschten Erfolg. In Vorträgen, Whitepapern und Artikeln stelle ich viele dieser neuen Technolgien in Zusammenhang mit den meisten im Business vorhandenen Prozessen und gebe ihnen damit vielleicht einen besseren Ausgangspunkt oder eine Idee für ihre Entscheidung zur Investitionen in diese neuen Technologien.{:.lead}
 
 > Your complete presence on the web — A [blog], [portfolio], and [resume].
 {:.lead}
 
 
 ## Vision
-Business und IT Abteilungen sprechen oftmals leider nicht die gleiche Sprache. Oft werden aus einem solchen Verständigungsproblem neue Technologien eingesetzt, welche die eigentlichen Geschäftsprozesse nur eingeschränkt unterstützen. IT-Abteilungen müssen heute in der Regel mit weniger Budget und Personal immer mehr leisten. Neue Technologien und Automatisierung von bestehenden Prozessen können nicht nur ihre IT entlasten, sondern reduzieren auch Aufwände in anderen Bereichen. Was letztendlich auch wieder Kosten einspart. In einer Rolle als Dolmetscher bewerte ich Anforderungen aus ihrem täglichen Geschäft und übersetze diese in Konzepte, Prozesse und Strategien die mit neuen und auch bestehenden Technologien umgesetzt werden können.
+Business und IT Abteilungen sprechen oftmals leider nicht die gleiche Sprache. Oft werden aus einem solchen Verständigungsproblem neue Technologien eingesetzt, welche die eigentlichen Geschäftsprozesse nur eingeschränkt unterstützen. IT-Abteilungen müssen heute in der Regel mit weniger Budget und Personal immer mehr leisten. Neue Technologien und Automatisierung von bestehenden Prozessen können nicht nur ihre IT entlasten, sondern reduzieren auch Aufwände in anderen Bereichen. Was letztendlich auch wieder Kosten einspart. In einer Rolle als Dolmetscher bewerte ich Anforderungen aus ihrem täglichen Geschäft und übersetze diese in Konzepte, Prozesse und Strategien die mit neuen und auch bestehenden Technologien umgesetzt werden können.{:.lead}
 
 **Hydejack** is 100% built on Open Source software, and is Open Source itself, save for parts of the PRO version. The PRO version is a one-time payment that gives you the right to use it forever.
 
@@ -49,16 +36,14 @@ Hydejack is all static sites. _HTML_. All you need is a web server --- any web s
 
 
 ## Passion
-Meine wesentlichste Eigenschaft ist jedoch die Leidenschaft für neue Technologien. Gerade auch dann, wenn diese Technologien noch nicht den Sprung in den Mainstream geschafft haben. Nur so bin ich in der Lage, diese Technologien mit dem nötigen Respekt aber auch mit der erforderlichen Neugier zu betrachten und zu bewerten. Ich spreche und schreibe über die Themen, die in einem Prospekt eben nicht zu finden sind. Dabei greife ich auch Themen, Technologien und Konzepte auf, die sich in der Vergangenheit zwar bewährt haben aber nicht mehr in das aktuelle Marketingkonzept der Hersteller passen. Neu kombiniert ist das eine oder andere vielleicht das fehlende Puzzleteil in ihrem Konzept und liefert ihnen vielleicht die Idee für ein neues Konzept.
+Meine wesentlichste Eigenschaft ist jedoch die Leidenschaft für neue Technologien. Gerade auch dann, wenn diese Technologien noch nicht den Sprung in den Mainstream geschafft haben. Nur so bin ich in der Lage, diese Technologien mit dem nötigen Respekt aber auch mit der erforderlichen Neugier zu betrachten und zu bewerten. Ich spreche und schreibe über die Themen, die in einem Prospekt eben nicht zu finden sind. Dabei greife ich auch Themen, Technologien und Konzepte auf, die sich in der Vergangenheit zwar bewährt haben aber nicht mehr in das aktuelle Marketingkonzept der Hersteller passen. Neu kombiniert ist das eine oder andere vielleicht das fehlende Puzzleteil in ihrem Konzept und liefert ihnen vielleicht die Idee für ein neues Konzept.{:.lead}
 
 <!--posts-->
-
 
 ## Experience
 Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogger und Vollzeit-Geek mit 20 Jahren Berufserfahrung in großen, weltweit agierenden Unternehmen. Aktuell verantworte ich als Managing Consultant und IT-Architekt den Bereich Virtualisierung und Cloud.  Konzeptionelle Infrastruktur Designs inklusive der entsprechenden TCO und ROI Betrachtungen gehören ebenso zu meinen Tätigkeiten wie Projekt- und Teilprojektleitungen nach PRINCE2. Technische Skills besitze ich hauptsächlich im Bereich Microsoft Serverumgebungen sowie Citrix™ Produkten mit dem Schwerpunkt auf Virtualisierung von Servern und Desktops. Hierfür wurde ich im Jahr 2009 von Citrix™ für meine Expertise als CTP (Citrix Technology Professional) ausgezeichnet.
 
 <!--projects-->
-
 
 ## A Printable Resume
 Get a resume that's consistent across the board — whether it's on the web, mobile, print, or [PDF](assets/Resume.pdf).
@@ -68,10 +53,8 @@ Get a resume that's consistent across the board — whether it's on the web, mob
 Front and center page of a print resume generated by Hydejack.
 {:.figcaption}
 
-
 ## Just Markdown
 Write all content with Markdown. __Hydejack__ gives you [additional CSS classes](docs/writing.md) to stylize your content, without losing compatibility with other Jekyll themes.
-
 
 ## Just Markup
 **Hydejack** boasts a plethora of modern JavaScript, but make no mistake: It's still a _plain old web page_ at its core. It works without JavaScript and you can even view it in a text-based browser like `w3m`:
@@ -80,7 +63,6 @@ Write all content with Markdown. __Hydejack__ gives you [additional CSS classes]
 
 The Hydejack blog, as seen by the text browser `w3m`.
 {:.figcaption}
-
 
 ## Syntax Highlighting
 **Hydejack** features syntax highlighting, powered by [Rouge].
@@ -96,7 +78,6 @@ The Hydejack blog, as seen by the text browser `w3m`.
 
 Code blocks can have a filename and a caption.
 {:.figcaption}
-
 
 ## Beautiful Math
 They say math is beautiful — and with **Hydejack**'s [math support][math] it's guaranteed to also look beautiful:
@@ -122,22 +103,18 @@ $$
 Hydejack uses KaTeX to efficiently render math.
 {:.figcaption}
 
-
 ## Build an Audience
 The PRO version has built-in support for customizable [Tinyletter] newsletter subscription boxes.
 
 If you are using a different service like MailChimp, you can build a custom newsletter subscription box using [Custom Forms][forms].
 
-
 ## Features
 
 {% include features.md %}
 
-
 ## Comparison
 
 {% include table.md %}
-
 
 ## Get It Now
 
@@ -145,35 +122,10 @@ Use the the form below to purchase Hydejack PRO:
 
 <div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
 
-
 [blog]: /
-[portfolio]: https://hydejack.com/examples/
-[resume]: https://hydejack.com/resume/
-[download]: https://hydejack.com/download/
-[welcome]: https://hydejack.com/
-[forms]: https://hydejack.com/forms-by-example/
+[portfolio]: /examples
+[resume]: /examples
 
-[features]: #features
-[news]: #build-an-audience
-[syntax]: syntax-highlighting
-[latex]: #beautiful-math
-[dark]: https://hydejack.com/blog/hydejack/2018-09-01-introducing-dark-mode/
-[search]: https://hydejack.com/#_search-input
-[grid]: https://hydejack.com/blog/hydejack/
-
-[lic]: LICENSE.md
-[pro]: licenses/PRO.md
-[docs]: docs/README.md
-[ofln]: docs/advanced.md#enabling-offline-support
 [math]: docs/writing.md#adding-math
-
-[kit]: https://github.com/hydecorp/hydejack-starter-kit/releases
-[src]: https://github.com/hydecorp/hydejack
-[gem]: https://rubygems.org/gems/jekyll-theme-hydejack
-[buy]: https://gum.co/nuOluY
-
-[gpss]: https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhydejack.com%2Fdocs%2F
 [rouge]: http://rouge.jneen.net
-[katex]: https://khan.github.io/KaTeX/
-[mathjax]: https://www.mathjax.org/
 [tinyletter]: https://tinyletter.com/

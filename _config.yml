@@ -53,7 +53,7 @@ menu:
     url:               /example/
   - title:             Documentation
     url:               /docs/
-  - title:             About
+  - title:             About me
     url:               /about/
 
 # Add links to the footer.
@@ -410,7 +410,7 @@ jekyll_compose:
         A short ~160 character description of your post for search engines,
         social media previews, etc.
       image:
-        path: /assets/img/sidebar-bg.jpg
+        path: https://tfstate12703.blob.core.windows.net/datablob/sidebar-bg.jpg
     projects:
       layout: project
       description: > 
