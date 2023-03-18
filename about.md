@@ -12,7 +12,7 @@ redirect_from:
 # About me
 
 - Table of Contents
-{:toc .large-only}
+{:toc .lead .large-only}
 
 ![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-720x480.jpg)
 {:.lead width="240" height="360" loading="lazy"}
@@ -50,12 +50,12 @@ Price now permanently reduced by **30%**! Use the offer code **QR0TW8M** to appl
 
 <div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
 
-> My complete presence on the web — A [blog], [documenation], and [portfolio].
+> My complete presence on the web — A [blog], [documentation], and [portfolio].
 {:.lead}
 
-[blog]: /
-[documentation]: /docs/
-[porfolio]: /example/
+[blog]: article/
+[documentation]: docs/
+[portfolio]: example/
 
 [CTP]: https://www.citrix.com/community/ctp/awardees.html
 [VIPP]: https://www.parallels.com/partners/vipp/#members
