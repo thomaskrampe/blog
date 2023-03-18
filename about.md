@@ -11,12 +11,12 @@ redirect_from:
 
 # About me
 
-[![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-300x200.png){:.lead width="200" height="300" loading="lazy"}][resume]{:.no-hover.no-mark}
+![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-300x200.png){loading="lazy"}
 
 Thomas Krampe
 {:.figcaption}
 
-1. this list will be replaced by the toc
+- Table of Contents
 {:toc .large-only}
 
 ## Mission
