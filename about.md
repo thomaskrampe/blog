@@ -40,12 +40,14 @@ Meine wesentlichste Eigenschaft ist jedoch die Leidenschaft für neue Technologi
 
 ## Experience
 Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogger und Vollzeit-Geek mit 20 Jahren Berufserfahrung in großen, weltweit agierenden Unternehmen. Aktuell verantworte ich als Managing Consultant und IT-Architekt den Bereich Virtualisierung und Cloud.  Konzeptionelle Infrastruktur Designs inklusive der entsprechenden TCO und ROI Betrachtungen gehören ebenso zu meinen Tätigkeiten wie Projekt- und Teilprojektleitungen nach PRINCE2. Technische Skills besitze ich hauptsächlich im Bereich Microsoft Serverumgebungen sowie Citrix™ Produkten mit dem Schwerpunkt auf Virtualisierung von Servern und Desktops. Hierfür wurde ich im Jahr 2009 von Citrix™ für meine Expertise als [CTP] (Citrix Technology Professional) und von Parallels im Jahr 2021 zum [VIPP] (Very Important Parallels Professional) ausgezeichnet.
+{:.lead}
 
 <!--projects-->
 
 ## Get It Now
 
 Use the the form below to purchase Hydejack PRO:
+Price now permanently reduced by <strong class="discount">30%</strong>! Use the offer code <strong class="code">QR0TW8M</strong> to apply this discount later. 
 
 <div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
 
