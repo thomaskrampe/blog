@@ -9,9 +9,13 @@ redirect_from:
   - /download/
 ---
 
-# About
+# About me 
 
 <!--author-->
+[![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-720x480.jpg){:.lead width="480" height="720" loading="lazy"}][resume]{:.no-hover.no-mark}
+
+Thomas Krampe
+{:.figcaption}
 
 1. this list will be replaced by the toc
 {:toc .large-only}
@@ -35,7 +39,7 @@ Meine wesentlichste Eigenschaft ist jedoch die Leidenschaft für neue Technologi
 <!--posts-->
 
 ## Experience
-Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogger und Vollzeit-Geek mit 20 Jahren Berufserfahrung in großen, weltweit agierenden Unternehmen. Aktuell verantworte ich als Managing Consultant und IT-Architekt den Bereich Virtualisierung und Cloud.  Konzeptionelle Infrastruktur Designs inklusive der entsprechenden TCO und ROI Betrachtungen gehören ebenso zu meinen Tätigkeiten wie Projekt- und Teilprojektleitungen nach PRINCE2. Technische Skills besitze ich hauptsächlich im Bereich Microsoft Serverumgebungen sowie Citrix™ Produkten mit dem Schwerpunkt auf Virtualisierung von Servern und Desktops. Hierfür wurde ich im Jahr 2009 von Citrix™ für meine Expertise als CTP (Citrix Technology Professional) ausgezeichnet.
+Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogger und Vollzeit-Geek mit 20 Jahren Berufserfahrung in großen, weltweit agierenden Unternehmen. Aktuell verantworte ich als Managing Consultant und IT-Architekt den Bereich Virtualisierung und Cloud.  Konzeptionelle Infrastruktur Designs inklusive der entsprechenden TCO und ROI Betrachtungen gehören ebenso zu meinen Tätigkeiten wie Projekt- und Teilprojektleitungen nach PRINCE2. Technische Skills besitze ich hauptsächlich im Bereich Microsoft Serverumgebungen sowie Citrix™ Produkten mit dem Schwerpunkt auf Virtualisierung von Servern und Desktops. Hierfür wurde ich im Jahr 2009 von Citrix™ für meine Expertise als [CTP] (Citrix Technology Professional) und von Parallels im Jahr 2021 zum [VIPP] (Very Important Parallels Professional) ausgezeichnet.
 
 <!--projects-->
 
@@ -55,3 +59,6 @@ Use the the form below to purchase Hydejack PRO:
 [blog]: /
 [portfolio]: /example/
 [resume]: /example/
+
+[CTP]: https://www.citrix.com/community/ctp/awardees.html
+[VIPP]: https://www.parallels.com/partners/vipp/#members
