@@ -4,13 +4,13 @@ title: Beispiel Artikel
 description: >
   Das ist ein Beispiel Artikel.
 image: 
-  path: /assets/img/article/beispiel_artikel_1920x960.png
+  path: /assets/img/article/beispiel_artikel.png
   srcset:
-    1060w: /assets/img/article/beispiel_artikel_1920x960.png
-    530w:  /assets/img/article/beispiel_artikel@0,5.png
-    265w:  /assets/img/blog/beispiel_artikel@0,25x.png
+    1920w: /assets/img/article/beispiel_artikel.png
+    960w:  /assets/img/article/beispiel_artikel@0,5.png
+    480w:  /assets/img/blog/beispiel_artikel@0,25x.png
 sitemap: false
-hide_last_modified: false
+hide_last_modified: true
 ---
 
 Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
