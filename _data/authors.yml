@@ -15,11 +15,11 @@ author1:
     
   # This photo will be used in the about section
   picture:
-    path:            https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-128x128.jpg
+    path:            https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-128x128.png
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-128x128.jpg
-      2x:            https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-256x256.jpg
+      1x:            https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-128x128.png
+      2x:            https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-256x256.png
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
