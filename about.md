@@ -22,9 +22,6 @@ redirect_from:
 Neue Technologien kommen und gehen, viele werden schnell wieder vergessen doch einige wenige bleiben auf Dauer erhalten. In vielen Unternehmen ist es einfach nicht möglich, jede neue Technologie zu evaluieren und auf einen sinnvollen und gewinnbringenden Einsatz im Geschäftsprozess zu überprüfen. Oftmals bringt auch nur eine bestimmte Kombination von unterschiedlichen Technologien und Prozessen den entscheidenen Vorteil und führt somit auch zum gewünschten Erfolg. In Vorträgen, Whitepapern und Artikeln stelle ich viele dieser neuen Technolgien in Zusammenhang mit den meisten im Business vorhandenen Prozessen und gebe ihnen damit vielleicht einen besseren Ausgangspunkt oder eine Idee für ihre Entscheidung zur Investitionen in diese neuen Technologien.
 {:.lead}
 
-> My complete presence on the web — A [blog], [documenation], and [portfolio].
-{:.lead}
-
 ## Vision
 
 Business und IT Abteilungen sprechen oftmals leider nicht die gleiche Sprache. Oft werden aus einem solchen Verständigungsproblem neue Technologien eingesetzt, welche die eigentlichen Geschäftsprozesse nur eingeschränkt unterstützen. IT-Abteilungen müssen heute in der Regel mit weniger Budget und Personal immer mehr leisten. Neue Technologien und Automatisierung von bestehenden Prozessen können nicht nur ihre IT entlasten, sondern reduzieren auch Aufwände in anderen Bereichen. Was letztendlich auch wieder Kosten einspart. In einer Rolle als Dolmetscher bewerte ich Anforderungen aus ihrem täglichen Geschäft und übersetze diese in Konzepte, Prozesse und Strategien die mit neuen und auch bestehenden Technologien umgesetzt werden können.
@@ -36,6 +33,8 @@ Meine wesentlichste Eigenschaft ist jedoch die Leidenschaft für neue Technologi
 {:.lead}
 
 <!--posts-->
+
+<!--posts_list-->
 
 ## Experience
 
@@ -50,6 +49,9 @@ Use the the form below to purchase Hydejack PRO:
 Price now permanently reduced by **30%**! Use the offer code **QR0TW8M** to apply this discount later.
 
 <div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
+
+> My complete presence on the web — A [blog], [documenation], and [portfolio].
+{:.lead}
 
 [blog]: /
 [documentation]: /docs/
