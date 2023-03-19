@@ -10,8 +10,7 @@ slug: article
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-  This is a featured category, which have their own page.
-  Check out `_featured_tags/article.md` to learn how to create your own.
+  Strategisches Planen ist wertlos - es sei denn, man hat zuerst einmal eine gute Vison.
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
