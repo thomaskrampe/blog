@@ -2,7 +2,7 @@
 layout: post
 title: Windows-Updates mit PowerShell 
 description: >
-  Das ist ein Beispiel Artikel.
+  Leidige Windows Updates mit PowerShell automatisieren.
 image: 
   path: /assets/img/article/beispiel_artikel.png
   srcset:
@@ -13,7 +13,7 @@ sitemap: false
 hide_last_modified: true
 categories: [article]
 tag: [PowerShell]
-comments: true
+comments: false
 ---
 
 Es gibt unzählige Empfehlungen, wie Windows Updates am besten installiert werden sollen. Mein Ich wollte die Updates jedoch nicht einer „Windows Automatik“ überlassen, bin aber auch zu faul um auf jedem System die Windows Updates manuell zu installieren. Mal abgesehen davon, dass dieses RDP hopping ja auch ziemlich nervt. In größeren Umgebungen wird sicher eine autmatische Softwareverteilung oder ein WSUS die arbeit übernehmen, aber in kleineren Umgebungen ist ein ziemlicher Aufwand diese Systeme zu betreiben und zu verwalten.
