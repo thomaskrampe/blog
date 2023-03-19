@@ -25,8 +25,8 @@ title:                 Thomas Krampe
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  Hydejack is a boutique Jekyll theme for hackers, nerds, and academics,
-  with a focus on personal sites that are meant to impress.
+  Strategisches Planen ist wertlos - es sei denn, man hat zuerst einmal 
+  eine gute Vision.
 
 # A shorter description for the sidebar.
 tagline:               News from my desk
@@ -403,22 +403,22 @@ jekyll_compose:
     drafts:
       layout: post
       description: > 
-        A short ~160 character description of your post for search engines,
-        social media previews, etc.
+        Strategisches Planen ist wertlos - es sei denn, man hat zuerst einmal 
+        eine gute Vision.
       image:
         path: https://tfstate12703.blob.core.windows.net/datablob/sidebar-bg.jpg
     posts:
       layout: post
       description: > 
-        A short ~160 character description of your post for search engines,
-        social media previews, etc.
+        Strategisches Planen ist wertlos - es sei denn, man hat zuerst einmal 
+        eine gute Vision.
       image:
         path: https://tfstate12703.blob.core.windows.net/datablob/sidebar-bg.jpg
     projects:
       layout: project
       description: > 
-        A short ~160 character description of your post for search engines,
-        social media previews, etc.
+        Strategisches Planen ist wertlos - es sei denn, man hat zuerst einmal 
+        eine gute Vision.
       image:
         path: https://tfstate12703.blob.core.windows.net/datablob/sidebar-bg.jpg
       links:
