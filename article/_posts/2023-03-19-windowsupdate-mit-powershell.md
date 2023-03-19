@@ -16,7 +16,9 @@ tag: [PowerShell]
 comments: false
 ---
 
-Es gibt unzählige Empfehlungen, wie Windows Updates am besten installiert werden sollen. Mein Ich wollte die Updates jedoch nicht einer „Windows Automatik“ überlassen, bin aber auch zu faul um auf jedem System die Windows Updates manuell zu installieren. Mal abgesehen davon, dass dieses RDP hopping ja auch ziemlich nervt. In größeren Umgebungen wird sicher eine autmatische Softwareverteilung oder ein WSUS die arbeit übernehmen, aber in kleineren Umgebungen ist ein ziemlicher Aufwand diese Systeme zu betreiben und zu verwalten.
+Es gibt unzählige Empfehlungen, wie Windows Updates am besten installiert werden sollen. Mein Ich wollte die Updates jedoch nicht einer "Windows Automatik" überlassen, bin aber auch zu faul um auf jedem System die Windows Updates manuell zu installieren. 
+
+Mal abgesehen davon, dass dieses RDP hopping ja auch ziemlich nervt. In größeren Umgebungen wird sicher eine autmatische Softwareverteilung oder ein WSUS die arbeit übernehmen, aber in kleineren Umgebungen ist ein ziemlicher Aufwand diese Systeme zu betreiben und zu verwalten.
 
 Der erste Gedanke war nun, dass mache ich per PowerShell. Und tatsächlich gibt es ein entsprechendes PowerShell Modul in der PowerShell Gallery.
 
@@ -51,7 +53,7 @@ Danach muss das Modul auf den Maschinen, auf denen es verwendet werden soll in d
 Wer es nicht hin und her kopieren möchte, kann es auch Remote auf anderen Maschinen installieren: Das geht mit:
 
 ~~~powershell
-$ZielMaschinen = „Server1“, „Server2“, 
+$ZielMaschinen = "Server1", "Server2", 
 Update-WUModule -ComputerName $ZielMaschinen -Local
 ~~~
 
