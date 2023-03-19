@@ -11,6 +11,8 @@ image:
     480w:  /assets/img/blog/beispiel_artikel@0,25x.png
 sitemap: false
 hide_last_modified: true
+categories: [article]
+tag: [beispiel, demo]
 comments: true
 ---
 
