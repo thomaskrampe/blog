@@ -16,39 +16,39 @@ tag: [Microsoft]
 comments: false
 ---
 
-Einmal installiert stellen die Microsoft Active Directory Zertifikatdienste (AD CS), also die Zertifizierungsstelle (CA) von Microsoft, entsprechend benötigte Zertifikate aus. 
+Einmal installiert stellen die Microsoft Active Directory Zertifikatdienste (AD CS), also die Zertifizierungsstelle (CA) von Microsoft, entsprechend benötigte Zertifikate aus.
 
-Je nach dem welche Zertifikat Templates installiert und bereitgestellt werden können dies eine ganze Menge an Zertifikaten werden, ganz besonders wenn zum Beispiel Lösungen die Federated Authentication Services (FAS) von Citrix oder ähnliche Produkte eingesetzt werden. Obwohl meistens alles reibungslos funktunioniert, braucht auch so eine CA ab und zu ein wenig Pflege.
+Je nach dem welche Zertifikat Templates installiert und bereitgestellt werden sollen, können dies eine ganze Menge an Zertifikaten werden. Ganz besonders dann, wenn zum Beispiel Lösungen wie die Federated Authentication Services (FAS) von Citrix oder ähnliche Produkte eingesetzt werden. Obwohl meistens alles reibungslos funktunioniert, braucht auch so eine CA ab und zu ein wenig Pflege.
 
 ## Zertifikate
 
-Zunächst müssen wir verstehen, was alles genau in der CA-Datenbank gespeichert wird. Wenn ein neuer Zertifikatsantrag bei der Zertifizierungsstelle eingereicht wird, wird eine neue Zeile in der Datenbank erstellt. Während die Anfrage von der Zertifizierungsstelle bearbeitet wird, werden die verschiedenen Felder in dieser Zeile aktualisiert, und der Status jeder Anfrage zu einem bestimmten Zeitpunkt beschreibt, an welchem Punkt des Prozesses sich die Anfrage befindet.
+Zunächst müssen wir verstehen, was alles genau in der CA-Datenbank gespeichert wird. Wenn ein neuer Zertifikatsantrag bei der Zertifizierungsstelle eingereicht wird, wird eine neue Zeile in der Datenbank erstellt. Während die Anfrage von der Zertifizierungsstelle bearbeitet wird, werden die verschiedenen Felder in dieser Zeile aktualisiert und der Status jeder Anfrage zu einem bestimmten Zeitpunkt beschreibt, an welchem Punkt des Prozesses sich die Anfrage befindet.
 
-Welches sind die möglichen Zustände für jede Datenbankzeile:
+Möglichen Zustände für jede Datenbankzeile sind:
 
  * **Pending (Ausstehend)** Ein ausstehender Antrag wird so lange zurückgestellt, bis ein Administrator den Antrag manuell genehmigt hat. Nach der Genehmigung wird der Antrag erneut zur Bearbeitung an die Zertifizierungsstelle weitergeleitet. Bei einer Standalone-CA werden alle Zertifikatsanträge standardmäßig zurückgestellt. Bei einer Unternehmens-CA werden Zertifikatsanforderungen zurückgestellt, wenn in der Zertifikatsvorlage die Option "Genehmigung durch den CA-Manager erforderlich" ausgewählt wurde.
 
-* **Failed (Fehlgeschlagen)** Eine fehlgeschlagene Anforderung ist eine Anforderung, die von der Zertifizierungsstelle abgelehnt wurde, weil sie nicht für die Richtlinien der Zertifizierungsstelle geeignet ist oder weil bei der Erstellung des Zertifikats ein Fehler aufgetreten ist. Ein Beispiel für einen solchen Fehler ist, wenn die Zertifikatsvorlage so konfiguriert ist, dass eine Schlüsselarchivierung erforderlich ist, in der CA aber keine Schlüsselwiederherstellungsagenten konfiguriert sind. Eine solche Anfrage wird fehlschlagen.
+* **Failed (Fehlgeschlagen)** Eine fehlgeschlagene Anforderung ist eine Anforderung, die von der Zertifizierungsstelle abgelehnt wurde, weil sie nicht für die Richtlinien der Zertifizierungsstelle geeignet ist oder weil bei der Erstellung des Zertifikats ein Fehler aufgetreten ist. Ein Beispiel für einen solchen Fehler ist, wenn die Zertifikatsvorlage so konfiguriert ist, dass eine Schlüsselarchivierung erforderlich ist, in der CA aber keine Schlüsselwiederherstellungsagenten konfiguriert sind.
 
 * **Issued (Ausgestellt)** Die Anforderung wurde erfolgreich verarbeitet und das Zertifikat wurde ausgestellt.
 
 * **Revoked (Widerrufen)** Die Zertifikatsanforderung wurde bearbeitet und das Zertifikat ausgestellt, aber der Administrator hat das Zertifikat widerrufen.
 
-Diese Zustände und die Tatsache, ob ein Zertifikat abgelaufen ist oder nicht, müssen bei der Entscheidung, welche Zeilen gelöscht werden sollen, berücksichtigt werden.
+Diese Zustände und die Tatsache, ob ein Zertifikat abgelaufen ist oder nicht, müssen bei der Entscheidung welche Zeilen gelöscht werden sollen berücksichtigt werden.
 
-Zeitlich gültige, ausgestellte Zertifikate (Issued) oder auch zeitlich gültige, aber widerrufene Zertifikate (Revoked) können nicht mit dem CA Manager nicht gelöscht werden, da diese Informationen erforderlich sind, damit die Zertifizierungsstelle regelmäßig ihre Zertifikatswiderrufsliste (CRL) erstellen kann.
+Zeitlich gültige, ausgestellte Zertifikate (Issued) oder auch zeitlich gültige, aber widerrufene Zertifikate (Revoked) können nicht mit dem CA Manager gelöscht werden. Diese Informationen für die regelmäßige Erstellung der Zertifikatswiderrufsliste (CRL) erforderlich.
 
-Wenn ein Zertifikat jedoch abgelaufen ist, können wir es mit den Zertifikatsdiensten löschen. Abgelaufene Zertifikate sind von vornherein nicht mehr gültig, so dass es nicht notwendig ist, den Sperrstatus beizubehalten. Wenn wir jedoch die Schlüsselarchivierung aktiviert haben, sind möglicherweise auch private Schlüssel in der Datenbankzeile gespeichert. Sobald wir die Zeile löschen, können Sie diese privaten Schlüssel nicht mehr wiederhergestellt werden.
+Wenn ein Zertifikat jedoch abgelaufen ist, können wir es mit den Zertifikatsdiensten löschen. Abgelaufene Zertifikate sind von vornherein nicht mehr gültig, so dass es nicht notwendig ist den Sperrstatus beizubehalten. Wenn wir jedoch die Schlüsselarchivierung aktiviert haben, sind möglicherweise auch private Schlüssel in der Datenbankzeile gespeichert. Sobald wir die Zeile löschen, können Sie diese privaten Schlüssel nicht mehr wiederhergestellt werden.
 
-Bleiben noch fehlgeschlagene und ausstehende Anfragen. Bei diesen Zeilen handelt es sich lediglich um Anfragen; es sind keine ausgestellten Zertifikate mit ihnen verbunden. 
+Bleiben jetzt noch fehlgeschlagene und ausstehende Anfragen. Bei diesen Zeilen handelt es sich lediglich um Anfragen, es sind keine ausgestellten Zertifikate mit ihnen verbunden.
 
-Außerdem kann der Administrator eine fehlgeschlagene Anforderung zwar technisch gesehen erneut an die Zertifizierungsstelle übermitteln, doch hat dies wenig Sinn, solange die Ursache des ursprünglichen Fehlschlags nicht behoben ist. 
+Ein Administrator kann zwar eine fehlgeschlagene Anforderung technisch gesehen erneut an die Zertifizierungsstelle übermitteln, doch hat dies wenig Sinn, solange die Ursache des ursprünglichen Fehlschlags nicht behoben ist.
 
-In der Praxis können wir fehlgeschlagene Anfragen sicher löschen. Ausstehende Anfragen sollten von einem Administrator geprüft werden, bevor sie gelöscht werden. Ein ausstehender Antrag bedeutet, dass jemand da draußen einen ausstehenden Zertifikatsantrag hat, auf den er geduldig auf eine Antwort wartet. Der Administrator sollte alle ausstehenden Anträge durchgehen und entweder ausstellen oder ablehnen, um die Warteschlange zu leeren, anstatt die Datensätze einfach zu löschen.
+In der Praxis können wir fehlgeschlagene Anfragen sicher löschen. Ausstehende Anfragen sollten von einem Administrator geprüft werden, bevor sie gelöscht werden. Ein ausstehender Antrag bedeutet, dass jemand da draußen einZertifikat angefordert hat, auf das er geduldig wartet. Der Administrator sollte alle ausstehenden Anträge durchgehen und entweder ausstellen oder ablehnen um die Warteschlange zu leeren, anstatt die Datensätze einfach zu löschen.
 
 ### Zuerst mal das Problem beseitigen
 
-Bevor wir allerdings damit beginnen, die fehlgeschlagenen Anfragen aus der Datenbank zu löschen, sollten wir sicherstellen, dass Sie alle Konfigurationsprobleme behoben haben, die zu diesen Fehlern geführt haben. Wenn wir jetzt die fehlgeschlagenen Anfragen löschen, werden sich diese ohne Beseitigung des eigentlichen Problems, schnell wieder herstellen.
+Bevor wir allerdings damit beginnen, die fehlgeschlagenen Anfragen aus der Datenbank zu löschen, sollten wir sicherstellen, dass Sie alle Konfigurationsprobleme behoben haben die zu diesen Fehlern geführt haben. Wenn wir jetzt die fehlgeschlagenen Anfragen löschen, werden sich diese ohne Beseitigung des eigentlichen Problems, schnell wieder herstellen.
 
 Wenn die grundlegenden Probleme, die zu den fehlgeschlagenen Anforderungen geführt haben, behoben sind, überwachen wir das Ereignisprotokoll, um sicherzustellen, dass die Zertifikatsdienste keine weiteren fehlgeschlagenen Anforderungen protokollieren. In einer sehr großen Umgebung sind einige fehlgeschlagene Anfragen allerdings auch zu erwarten.
 
@@ -56,11 +56,11 @@ Sobald keine Mengen an fehlgeschlagenen Anforderungen mehr protokolliert werden,
 
 ### Löschen der fehlgeschlagenen Anfragen
 
-Der nächste Schritt in diesem Prozess ist das tatsächliche Löschen der Zeilen mit dem bewährten Kommandozeilenprogramm `certutil.exe`. Der Parameter `-deleterow` (ab Windows Server 2003) kann zum Löschen von Zeilen aus der CA-Datenbank verwendet werden. 
+Der nächste Schritt in diesem Prozess ist das tatsächliche Löschen der Zeilen mit dem bewährten Kommandozeilenprogramm `certutil.exe`. Der Parameter `-deleterow` (ab Windows Server 2003) kann zum Löschen von Zeilen aus der CA-Datenbank verwendet werden.
 
-Geben Sie einfach den Typ der zu löschenden Datensätze und ein Datum an, das in der Vergangenheit liegt (wenn Sie ein Datum angeben, das dem aktuellen Datum oder einem späteren Datum entspricht, schlägt der Befehl fehl). Certutil.exe löscht dann die Zeilen dieses Typs, bei denen das Datum, an dem die Anfrage bei der CA eingereicht wurde (oder das Ablaufdatum bei ausgestellten Zertifikaten), vor dem angegebenen Datum liegt. 
+Geben Sie einfach den Typ der zu löschenden Datensätze und ein Datum an das in der Vergangenheit liegen sollte (wenn Sie ein Datum angeben, das dem aktuellen Datum oder einem späteren Datum entspricht, schlägt der Befehl fehl). Certutil.exe löscht dann die Zeilen dieses Typs, bei denen das Datum, an dem die Anfrage bei der CA eingereicht wurde (oder das Ablaufdatum bei ausgestellten Zertifikaten), vor dem angegebenen Datum liegt.
 
-Die wichtigsten Datensätze sind:
+Die wichtigsten Datensatztypen sind:
 
 | Name      | Beschreibung        | Datentyp           |
 |:----------|:--------------------|:-------------------|
@@ -70,13 +70,13 @@ Die wichtigsten Datensätze sind:
 
 Es existieren noch weitere, die sind aber eher uninteressant für diesen Artikel.
 
-Wenn wir jetzt zum Beispiel alle fehlgeschlagenen Anfragen vom 10.1.2023 (und ältere) löschen möchten, verwenden wir das folgenden Kommando in einer administrativen CMD oder PowerShell Session auf dem Server auf dem die Zertifizierungsdienste installiert sind:
+Wenn wir jetzt zum Beispiel alle fehlgeschlagenen Anfragen vom 10.1.2023 (und ältere) löschen möchten, verwenden wir das folgenden Kommando in einer administrativen CMD oder PowerShell Session auf dem Server auf dem auch die Zertifizierungsdienste installiert sind:
 
 ~~~bash
 certutil -deleterow 1/10/2023 Request
 ~~~
 
-In einigen Fällen bricht das Tool bei mehr als 3000 Anfragen ab. Hier hilft ein kleiner Trich mit einem Batch Skript und einer Schleife.
+In einigen Fällen bricht das Tool bei mehr als 3000 Zeilen in der Datenbank ab. Hier hilft ein kleiner Trick mit einem Batch Skript und einer Schleife.
 
 ~~~bash
 // file: "DeleteFailedCerts.cmd"
@@ -93,7 +93,7 @@ Natürlich können wir auch bereits abgelaufene und zurückgezogenen Zertifikate
 certutil -deleterow 1/10/2023 Cert
 ~~~~
 
-Letzteres ist vielleicht nicht ganz gewollt, da hier eben alle Zertifikate (**und die dazugehörigen Schlüssel**) aus der Datenbank gelöscht werden. Gerade für diesen Einsatzzweck habe ich ein Powershell Skript geschrieben, dass nicht nur basierend auf dem Datum Zertifikate löscht, sondern auch das Template, mit welchen die Zertifikate erstellt wurden, berücksichtigt.
+Letzteres ist vielleicht nicht ganz gewollt, da hier eben alle Zertifikate (**und die dazugehörigen Schlüssel**) aus der Datenbank gelöscht werden. Gerade für diesen Einsatzzweck habe ich ein Powershell Skript geschrieben, dass nicht nur basierend auf dem Datum Zertifikate löscht, sondern auch das Template, mit welchen die Zertifikate erstellt wurden berücksichtigt.
 
 Das Skript ist in meinem [GitHub Repository][1] erhältlich. Der ursprünglche Einsatzzweck ist die Zertifikate zu löschen die von Citrix FAS angelegt wurden. Das Skript kann aber leicht angepasst werden.
 
@@ -104,7 +104,7 @@ Zuerst löschen wir noch alle edb000xx.log Dateien sowie die edb.chk Datei. Wenn
 
 ![][2]
 
-Da die Zertifizierungsstelle auch während dieses Vorgangs nicht online sein darf, lassen wir die Dienste noch deaktiviert und führen den folgenden Befehl aus:
+Da die Zertifizierungsstelle auch während des Defragmentierens nicht online sein darf, lassen wir die Dienste noch deaktiviert und führen den folgenden Befehl aus:
 
 ~~~bash
 C:\>Esentutl /d Pfad\zur\CaDatabase.edb
@@ -117,6 +117,7 @@ Im Hintergrund erstellt esentutl.exe eine temporäre Datenbankdatei und kopiert 
 Abschließend natürlich nicht vergessen, die Zertifizierungsstelle wieder zu starten. 
 
 ## Fazit
+
 Wie jeder andere Infrastrukturdienst in einer Windows Umgebung erfordert auch die Windows-Zertifizierungsstelle eine gewisse Aufmerksamkeit, Wartung und Überwachung, um ihre Funktionsfähigkeit auf Dauer gewährleisten zu können. Mit der richtigen Überwachung können wir ernste Probleme erkennen  bevor sie auftreten und mit regelmäßiger Wartung können wir verhindern, dass Probleme überhaupt auftreten.
 
 *[ESE]: Extensible Storage Engine
