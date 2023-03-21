@@ -1,12 +1,9 @@
 ---
 layout: about
-image: /assets/img/blog/hydejack-9.jpg
 description: >
   Ich verstehe geschäftliche Anforderungen und übersetze sie in erfolgreiche
   technische Konzepte, Entwürfe und Implementierungen.
 hide_description: true
-redirect_from:
-  - /download/
 ---
 
 # About me
@@ -14,7 +11,7 @@ redirect_from:
 - Table of Contents
 {:toc .lead .large-only}
 
-![Thomas Krampe](https://tfstate12703.blob.core.windows.net/datablob/Thomas_Krampe-720x480.jpg)
+![Thomas Krampe](/assets/img/blog/ThomasKrampe@0,5.png)
 {:.lead width="240" height="360" loading="lazy"}
 
 ## Mission
@@ -45,13 +42,6 @@ Use the the form below to purchase Hydejack PRO:
 Price now permanently reduced by **30%**! Use the offer code **QR0TW8M** to apply this discount later.
 
 <div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
-
-> My complete presence on the web — A [blog], [documentation], and [portfolio].
-{:.lead}
-
-[blog]: article/
-[documentation]: docs/
-[portfolio]: example/
 
 [CTP]: https://www.citrix.com/community/ctp/awardees.html
 [VIPP]: https://www.parallels.com/partners/vipp/#members
