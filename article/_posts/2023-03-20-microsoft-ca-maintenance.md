@@ -72,14 +72,15 @@ Es existieren noch weitere, die sind aber eher uninteressant für diesen Artikel
 
 Wenn wir jetzt zum Beispiel alle fehlgeschlagenen Anfragen vom 10.1.2023 (und ältere) löschen möchten, verwenden wir das folgenden Kommando in einer administrativen CMD oder PowerShell Session auf dem Server auf dem auch die Zertifizierungsdienste installiert sind:
 
-~~~bash
+~~~console
 certutil -deleterow 1/10/2023 Request
 ~~~
 
 In einigen Fällen bricht das Tool bei mehr als 3000 Zeilen in der Datenbank ab. Hier hilft ein kleiner Trick mit einem Batch Skript und einer Schleife.
 
-~~~bash
+~~~batchfile
 // file: "DeleteFailedCerts.cmd"
+
 @echo off
 
 :Top
@@ -89,7 +90,7 @@ If %ERRORLEVEL% EQU -939523027 goto Top
 
 Natürlich können wir auch bereits abgelaufene und zurückgezogenen Zertifikate mit dem folgenden Kommando löschen:
 
-~~~bash
+~~~console
 certutil -deleterow 1/10/2023 Cert
 ~~~~
 
@@ -106,7 +107,7 @@ Zuerst löschen wir noch alle edb000xx.log Dateien sowie die edb.chk Datei. Wenn
 
 Da die Zertifizierungsstelle auch während des Defragmentierens nicht online sein darf, lassen wir die Dienste noch deaktiviert und führen den folgenden Befehl aus:
 
-~~~bash
+~~~console
 C:\>Esentutl /d Pfad\zur\CaDatabase.edb
 ~~~~
 

@@ -244,7 +244,7 @@ An optional caption for a table
 ## Adding code blocks
 To add a code block without syntax highlighting, simply indent 4 spaces (regular markdown).
 For code blocks with code highlighting, use `~~~<language>`. This syntax is also supported by GitHub.
-For more information and a list of supported languages, see [Rouge](http://rouge.jneen.net/).
+For more information and a list of supported languages, see [Rouge](https://github.com/rouge-ruby/rouge/blob/master/docs/Languages.md).
 
 You can give each code block a filename, by making the first line in the block a comment of the form `File: "dir/filename.ext"`. Use either single quotes `'`, double quotes `"`, or backticks <code>`</code> to surround the filename.
 
