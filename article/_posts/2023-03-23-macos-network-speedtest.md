@@ -64,7 +64,7 @@ Abschließend noch ein paar weitere Details. Auf meinen Mac möchte das Terminal
 
 Für die Konfiguration wird `https://mensura.cdn-apple.com/api/v1/gm/config` verwendet. Der dort angegebene Endpoint wird von der API dynamisch, basierend vom Standort der jeweiligen Messung generiert (z.B. defra = Deutschland/Frankfurt, nlams = Niederlande/Amsterdam usw.). Wer also seine ausgehende Firewall konfigurieren möchte, sollte mit Allow 443 out für *.aaplimg.com und mensura.cdn-apple.com auf dem richtigen Weg sein.
 
-~~~xml
+~~~json
 { 
    "version": 1, 
    "urls": { 
