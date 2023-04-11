@@ -12,6 +12,9 @@ tag: [Security]
 comments: false
 ---
 
+* this unordered seed list will be replaced by the toc
+{:toc}
+
 **Vertrauen ist gut, Kontrolle ist besser**
 
 Dieses Sprichwort hat wohl jeder bereits irgendwann einmal in seinem Leben gehört und tatsächlich ergibt es nicht nur im alltäglichen Leben, sondern gerade auch in der Informationstechnologie seinen Sinn. Über Zero-Trust wird gerade sehr viel berichtet, aber was ist das und wie kann man diesen Ansatz verwenden?
