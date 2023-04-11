@@ -4,11 +4,11 @@ title: Windows-Updates mit PowerShell
 description: >
   Leidige Windows Updates mit PowerShell automatisieren.
 image: 
-  path: /assets/img/article/beispiel_artikel.png
+  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/beispiel_artikel.png
   srcset:
-    1920w: /assets/img/article/beispiel_artikel.png
-    960w:  /assets/img/article/beispiel_artikel@0,5.png
-    480w:  /assets/img/blog/beispiel_artikel@0,25x.png
+    1920w: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/beispiel_artikel.png
+    960w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/beispiel_artikel@0,5.png
+    480w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/beispiel_artikel@0,25x.png
 sitemap: false
 hide_last_modified: true
 categories: [article]

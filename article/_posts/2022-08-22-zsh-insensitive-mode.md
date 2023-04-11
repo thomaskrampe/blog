@@ -4,11 +4,11 @@ title: ZSH Insensitive Mode
 description: >
   ZSH und der ls - Befehl zum Auflisten von Dateien ohne Berücksichtigung der Groß- und Kleinschreibung
 image: 
-  path: /assets/img/article/zsh.png
+  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/zsh.png
   srcset:
-    1920w: /assets/img/article/zsh.png
-    960w:  /assets/img/article/zsh@0,5.png
-    480w:  /assets/img/blog/zsh@0,25x.png
+    1920w: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/zsh.png
+    960w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/zsh@0,5.png
+    480w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/zsh@0,25x.png
 sitemap: true
 hide_last_modified: true
 ---

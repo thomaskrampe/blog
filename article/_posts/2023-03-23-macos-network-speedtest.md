@@ -4,7 +4,7 @@ title: macOS Speedtest mit networkQuality
 description: >
   Wer die Qualität seiner Internetverbindung überprüfen möchte kann jetzt auf Build-in Tools zurückgreifen.
 image: 
-  path: /assets/img/article/speed-1280x640.jpg
+  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/speed-1280x640.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]
