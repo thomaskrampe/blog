@@ -16,6 +16,9 @@ tag: [Microsoft]
 comments: false
 ---
 
+* this unordered seed list will be replaced by the toc
+{:toc}
+
 Einmal installiert stellen die Microsoft Active Directory Zertifikatdienste (AD CS), also die Zertifizierungsstelle (CA) von Microsoft, entsprechend benötigte Zertifikate aus.
 
 Je nach dem welche Zertifikat Templates installiert und bereitgestellt werden sollen, können dies eine ganze Menge an Zertifikaten werden. Ganz besonders dann, wenn zum Beispiel Lösungen wie die Federated Authentication Services (FAS) von Citrix oder ähnliche Produkte eingesetzt werden. Obwohl meistens alles reibungslos funktunioniert, braucht auch so eine CA ab und zu ein wenig Pflege.
