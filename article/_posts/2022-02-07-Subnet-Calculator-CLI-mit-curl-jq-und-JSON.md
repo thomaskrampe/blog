@@ -4,11 +4,11 @@ title: Subnet Calculator
 description: >
   Subnet-Calculator im Command Line Interface
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/network.png
+  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/network.jpg
 sitemap: true
 hide_last_modified: true
 ---
-## API Aufruf
+## Subnet Calculator 
 
 Einfach die IP-Adresse in CIDR Notation per `curl` an die API schicken.
 
