@@ -7,8 +7,11 @@ image:
   path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/network.jpg
 sitemap: true
 hide_last_modified: true
+categories: [article]
+tag: [macOS]
+comments: false
 ---
-## Subnet Calculator 
+## Subnet Calculator
 
 Einfach die IP-Adresse in CIDR Notation per `curl` an die API schicken.
 
@@ -40,7 +43,7 @@ Danach können wir den JSON File parsen. Vorher können wir aber auch erstmal mi
 cat ip.txt | jq '.address.cidr_notation'
 ~~~
 
-Um das zu verstehen benötigen wir die JSON Ausgabe "formatiert". 
+Um das zu verstehen benötigen wir die JSON Ausgabe "formatiert".
 
 > Übrigens im Visual Studio geht das Formatieren von JSON mit `alt`+ `cmd`+ `m` bzw. `alt` + `m`.
 
@@ -82,7 +85,7 @@ cat ip.txt | jq '.address.last_assignable_host'
 
 Das ganze geht auch mit Powershell etwas komfortabler.
 
-`~~~powershell
+~~~powershell
 (Invoke-RestMethod https://networkcalc.com/api/ip/10.0.1.15/27).address
 ~~~
 
@@ -101,7 +104,6 @@ assignable_hosts      : 30
 first_assignable_host : 10.0.1.1
 last_assignable_host  : 10.0.1.30
 ~~~
-
 
 [1]: https://stedolan.github.io/jq/
 [2]: https://jqplay.org/#
