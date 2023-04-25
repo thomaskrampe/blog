@@ -43,7 +43,7 @@ Auf dem gestartete AVD Desktop können wir ebenfalls über die Verbindungseigens
 
 ![Bild 3](https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/AVD-RAS192-3.png)
 
-Alternativ dazu gibt es auch das Tool [Remote Disply Analyzer](https://rdanalyzer.com/) welches uns neben dem Verbindungsprotokoll in der Pro Version auch weitere nützlich Informationen zu unserer Verbindung liefern kann.
+Alternativ dazu gibt es auch das Tool [Remote Display Analyzer](https://rdanalyzer.com/) welches uns neben dem Verbindungsprotokoll in der Pro Version auch weitere nützlich Informationen zu unserer Verbindung liefern kann.
 
 ![Bild 4](https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/AVD-RAS192-4.png)
 
@@ -66,4 +66,4 @@ Wenn sowohl RDP Shortpath für öffentliche Netze als auch für verwaltete Netze
 
 ## Integrierte Verwaltung von RDP Shortpath in Parallels RAS
 
-Wenn Azure Virtual Desktop-Workloads über Parallels RAS bereitgestellt werden, kann RDP Shortpath das Benutzererlebnis verbessern, indem die Latenz durch die Nutzung von UDP-basiertem Transport minimiert wird. RDP Shortpath einfach über die Parallels RAS Konsole zu konfigurieren und Metriken über die Nutzung können ebenfalls direkt in der Konsole überprüft werden.
+Wenn Azure Virtual Desktop-Workloads über Parallels RAS bereitgestellt werden, kann RDP Shortpath das Benutzererlebnis verbessern, indem die Latenz durch die Nutzung von UDP-basiertem Transport minimiert wird. RDP Shortpath ist einfach über die Parallels RAS Konsole zu konfigurieren und Metriken über die Nutzung können ebenfalls direkt in der Konsole überprüft werden.
