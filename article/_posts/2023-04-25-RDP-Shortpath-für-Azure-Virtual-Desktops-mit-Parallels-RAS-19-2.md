@@ -39,7 +39,7 @@ Dieser Portbereich gilt nur für öffentliche Netzwerke und auch nur für die au
 
 ![Bild 2](https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/AVD-RAS192-2.png)
 
-Auf dem gestartete AVD Desktop können wir ebenfalls über die Verbindungseigenschaften überprüfen, ob RDP Shortpath über UDP in der Session aktiv ist.
+Auf dem gestarteten AVD Desktop können wir ebenfalls über die Verbindungseigenschaften überprüfen, ob RDP Shortpath über UDP in der Session aktiv ist.
 
 ![Bild 3](https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/AVD-RAS192-3.png)
 
@@ -64,7 +64,7 @@ Wenn sowohl RDP Shortpath für öffentliche Netze als auch für verwaltete Netze
 
 Mehr Informationen zu [RDP-Shortpath](https://learn.microsoft.com/en-us/azure/virtual-desktop/rdp-shortpath).
 
-**Achtung:** RDP-Shortpath ist ein Windows only Feature. macOS und Linux, entweder über den WebClient oder auch den RDP Client, stellen derzeit nur die Default TCP (Reverse Connect) her.
+**Achtung:** RDP-Shortpath ist ein Windows only Feature. macOS und Linux, entweder über den WebClient oder auch den RDP Client, stellen derzeit nur die Default TCP (Reverse Connect) Verbindung her.
 
 ## Integrierte Verwaltung von RDP Shortpath in Parallels RAS
 
