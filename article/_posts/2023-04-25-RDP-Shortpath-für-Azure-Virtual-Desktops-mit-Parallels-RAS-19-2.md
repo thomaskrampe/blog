@@ -60,9 +60,11 @@ RDP Shortpath für Azure Virtual Desktop kann prinzipiell in zwei verschiedenen 
 
 Der für RDP Shortpath verwendete Transport basiert auf dem Universal Rate Control Protocol (URCP). URCP erweitert UDP um eine aktive Überwachung der Netzbedingungen und sorgt für eine faire und vollständige Nutzung der Verbindungen. URCP arbeitet je nach Bedarf mit niedrigen Verzögerungs- und Verlustwerten.
 
+Wenn sowohl RDP Shortpath für öffentliche Netze als auch für verwaltete Netze aktiviert ist, kommt ein First-Found-Algorithmus zum Tragen, d. h. es wird die Verbindung verwendet, die zuerst für diese Sitzung hergestellt werden kann.
+
 Mehr Informationen zu [RDP-Shortpath](https://learn.microsoft.com/en-us/azure/virtual-desktop/rdp-shortpath).
 
-Wenn sowohl RDP Shortpath für öffentliche Netze als auch für verwaltete Netze aktiviert ist, kommt ein First-Found-Algorithmus zum Tragen, d. h. es wird die Verbindung verwendet, die zuerst für diese Sitzung hergestellt werden kann.
+**Achtung:** RDP-Shortpath ist ein Windows only Feature. macOS und Linux, entweder über den WebClient oder auch den RDP Client, stellen derzeit nur die Default TCP (Reverse Connect) her.
 
 ## Integrierte Verwaltung von RDP Shortpath in Parallels RAS
 
