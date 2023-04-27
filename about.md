@@ -39,12 +39,9 @@ Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogge
 
 <a href="https://www.buymeacoffee.com/thomaskrampe" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-## Get Hydejack PRO Now
+## Get Hydejack PRO
 
-Use the the form below to purchase Hydejack PRO:
-Price now permanently reduced by **30%**! Use the offer code **QR0TW8M** to apply this discount later.
-
-<div class="gumroad-product-embed" data-gumroad-product-id="nuOluY"><a href="https://gumroad.com/l/nuOluY">Loading…</a></div>
+Mit dem [folgenden Link](https://gumroad.com/l/nuOluY) könnt ihr Hydejack Pro mit **30%** Rabatt! Benutzt dafür einfach den Code **QR0TW8M**.
 
 [CTP]: https://www.citrix.com/community/ctp/awardees.html
 [VIPP]: https://www.parallels.com/partners/vipp/#members
