@@ -15,7 +15,7 @@ comments: false
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-Beim Zugriff auf virtuelle Anwendungen und Desktops hängt das User Experience in hohem Maße von der Netzwerkkommunikation, vor allem von der Latenz ab. Unter Latenz versteht man die Zeitspanne zwischen der Anforderung von Daten und dem Erhalt einer Antwort von der angesprochenen Ressource.
+Beim Zugriff auf virtuelle Anwendungen und Desktops hängt die User Experience in hohem Maße von der Netzwerkkommunikation, vor allem aber von der Latenz ab. Unter Latenz versteht man die Zeitspanne zwischen der Anforderung von Daten und dem Erhalt einer Antwort von der angesprochenen Ressource.
 
 Eine hohe Latenz bedeutet im Wesentlichen, dass unserer virtueller Desktop oder die Anwendungen sich auch langsam verhalten. Die Benutzer empfinden Verzögerungen bei Tastenanschlägen und Mausbewegungen oder Wiedergabe von Multimediainhalten als besonders störend.  RDP über UDP soll hier die allgemeine Benutzererfahrung erheblich verbessern. Dies gilt insbesondere für Anwendungen, die sehr latenzempfindlich sind wie z.B. grafikintensive Anwendungen.
 
