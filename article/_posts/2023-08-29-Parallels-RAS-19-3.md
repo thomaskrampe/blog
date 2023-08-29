@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Parallels RAS 19.3
+title: Parallels RAS 19.3 Tech-Preview
 description: >
   Das neue Release Parallels RAS 19.3 definiert Image Management neu.
 image: 
