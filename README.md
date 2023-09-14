@@ -1,2 +1,4 @@
 # My Blog
-Visit [https://blog.kngstn.eu](https://blog.kngstn.eu)
+Visit [https://blog.kngstn.eu][1]
+
+[1]: https://blog.kngstn.eu
