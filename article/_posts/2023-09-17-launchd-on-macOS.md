@@ -1,0 +1,115 @@
+---
+layout: post
+title: Verwenden von launchd zur Ausführung von Skripten in macOS
+description: >
+  Obwohl es nach wie vor in macOS enthalten ist und auch noch unterstützt wird, ist crond keine von Apple empfohlene Lösung mehr.
+image: 
+  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/2023-09-17-launchd-on-macos.jpg
+sitemap: true
+hide_last_modified: true
+categories: [article]
+tag: [Apple]
+comments: false
+---
+
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Warum launchd
+
+Obwohl es nach wie vor in macOS enthalten ist und auch noch unterstützt wird, ist **crond** keine von Apple empfohlene Lösung für das automatische Ausführen von Skripten mehr. Der offizielle Nachfolger auf macOS heißt **launchd**.
+
+Cron-Jobs funktionieren nach wie vor wie wir es auch von allen anderen UX Systemen kennen. Die systemweite Installation von Cron-Jobs ändert allerdings eine gemeinsam genutzte Ressource (die crontab Datei) und sollte deshalb auch nicht automatisch über ein Skript angepasst werden. Diesen Nachteil hat **launchd** nicht, da hier lediglich Agents bzw. Daemons als XML Beschreibung hinzugefügt und auch einfach wieder gelöscht werden können.
+
+## Skripte schreiben
+
+Um Agenten oder Daemons über launchd auszuführen, sollten wir zuerst die entsprechende Skripte schreiben, die dann über **launchd** ausgeführt werden sollen. Hier ändert sich im Vergleich zu **crond** nichts. Die gebräuchlichste Skriptsprache auf macOS ist bash, es geht aber auch mit Python, Perl oder natürlich auch Powershell (wird übrigens am besten über [HomeBrew][1] installiert).
+
+Unsere Skripte können wir bei **crond** überall liegen, die Job Beschreibungen müssen an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
+
+* Job Beschreibung in Form von .plist Dateien, die als Agenten im Namen des angemeldeten Benutzers agieren sollen, müssen in `~/Library/LaunchAgents` gespeichert werden.
+* Umgekehrt gehören Job Beschreibungen, die als Daemon fungieren und unabhängig vom angemeldeten Benutzer systemweit, also mit root Berechtigungen arbeiten, in `/Library/LaunchDaemons`.
+
+Immer daran denken, dass Agenten keine Root-Rechte haben und daher keine Aufgaben ausführen können, die einen tiefen Systemzugriff erfordern. Daemons hingegen laufen mit Root-Rechten und können Aufgaben ausführen, die das gesamte System betreffen.
+
+Ein schlecht geschriebenes und angreifbares Skript als Daemon kann als Einfallstor für weitere böse Jungs dienen.
+{:.note title="Achtung"}
+
+## Job Definitionen
+
+Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist Dateien in den o.g. Verzeichnissen gespeichert werden. Diese XML-Dateien geben dem Job einen Namen, spezifizieren das Skript, das gestartet werden soll, und geben an, wann das Skript ausgeführt werden soll. Sobald Sie Ihr Skript geschrieben haben, schreiben wir die eine Auftragsdefinition, die das Skript zum richtigen Zeitpunkt startet. Eine solche Auftragsdefinition sieht etwa wie folgt aus:
+
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>local.mybackup</string>
+        <key>Program</key>
+        <string>/Users/thomas/Scripts/rsync_backup.sh</string>
+        <key>RunAtLoad</key>
+        <true/>
+    </dict>
+</plist>
+~~~~
+
+Der Inhalt wird dann in eine Textdatei mit der Erweiterung **.plist** im richtigen Verzeichnis gespeichert (siehe oben).
+
+Die Auftragsbeschreibung besteht aus einigen wichtigen Teilen (einfach das Beispiel oben anpassen):
+
+* **Label:** der Name des Auftrags innerhalb von **launchd**. Er muss für jeden Job eindeutig sein. Diese werden in umgekehrter Domänenschreibweise geschrieben, und "local" ist eine gute Domäne für private Agenten.
+
+* **Program:** der vollständige Pfad des Skripts, das durch diese Jobbeschreibung gestartet wird.
+
+* **RunAtLoad:** beschreibt, wann das Skript ausgeführt werden soll. Hier gibt es einige verschiedene Optionen:
+
+	* **RunAtLoad:** wird ausgeführt, sobald die Job-Definition geladen ist. Wird nur einmal pro Ladevorgang ausgeführt.
+	* **StartInterval:** Startet den Job alle n Sekunden.
+	* **StartCalendarInterval:** Der Auftrag wird zu einem bestimmten Zeitpunkt und Datum ausgeführt.
+
+Sobald wir das Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird in Zukunft bei jeder Anmeldung automatisch geschehen.
+
+Um zu sehen, was gerade in **launchctl** läuft, können wir `launchctl list` im Terminal verwenden. Die Ausgabe kann natürlich mit `grep` gefiltert werden, da sonst die Liste etwas länger ist.
+
+~~~~console
+launchctl  list | grep local.mybackup
+~~~~
+
+Um jetzt den erstellten Agent oder Daemon zu starten, müssen wir ihn in `launchctl` laden, das passiert mit dem folgenden Kommando:
+
+~~~~console
+# Agent
+launchctl load ~/Library/LaunchAgents/local.mybackup.plist
+
+# Daemon
+launchctl load /Library/LaunchDaemons/local.mybackup.plist
+~~~~
+
+Um den Agent bzw. Daemon wieder zu enfernen, wird folgendes Kommando verwendet:
+
+~~~~console
+launchctl  unload ~/Library/LaunchAgents/local.mybackup.plist
+~~~~
+
+Wenn wir eine Auftragsdefinition in `launchctl` geladen haben, wird der Agent bzw. Daemon in die **launchd** Warteschlange gestellt und zu dem Zeitpunkt ausgeführt, der in den Startbedingungen angegeben ist. 
+
+Wenn wir ein Skript auf jeden Fall sofort uber `launchd` ausführen wollen (natürlich können wir das Skript selbst auch manuell im Terminal ausführen), können wir den Befehl **start** verwenden:
+
+~~~~console
+launchctl start local.mybackup
+~~~~
+
+Dieser Befehl nimmt das Label des Auftrags als Parameter und funktioniert nur, wenn der Auftrag bereits in `launchctl` geladen wurde.
+
+## Weiterführende Links
+* [Mac crontab: Creating macOS startup jobs with crontab, er, launchd][2]
+* [MacOS launchd plist StartInterval and StartCalendarInterval examples][3]
+* [MacOS ‘launchd’ examples (launchd plist example files)][4]
+* [Apple Developer - Daemons and Services Programming Guide][5]
+
+[1]: https://brew.sh/
+[2]: https://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs/
+[3]: https://alvinalexander.com/mac-os-x/launchd-plist-examples-startinterval-startcalendarinterval/ 
+[4]: https://alvinalexander.com/mac-os-x/launchd-examples-launchd-plist-file-examples-mac/
+[5]: https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html#//apple_ref/doc/uid/10000172i-CH1-SW2
