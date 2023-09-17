@@ -17,15 +17,15 @@ comments: false
 
 ## Warum launchd
 
-Obwohl es nach wie vor in macOS enthalten ist und auch noch unterstützt wird, ist **crond** keine von Apple empfohlene Lösung für das automatische Ausführen von Skripten mehr. Der offizielle Nachfolger auf macOS heißt **launchd**.
+Obwohl **cron** nach wie vor in macOS enthalten ist und auch noch unterstützt wird, ist **crond** keine von Apple empfohlene Lösung für das automatische Ausführen von Skripten mehr. Der offizielle Nachfolger auf macOS heißt **launchd**.
 
-Cron-Jobs funktionieren nach wie vor wie wir es auch von allen anderen UX Systemen kennen. Die systemweite Installation von Cron-Jobs ändert allerdings eine gemeinsam genutzte Ressource (die crontab Datei) und sollte deshalb auch nicht automatisch über ein Skript angepasst werden. Diesen Nachteil hat **launchd** nicht, da hier lediglich Agents bzw. Daemons als XML Beschreibung hinzugefügt und auch einfach wieder gelöscht werden können.
+Cron-Jobs funktionieren nach wie vor wie wir es auch von allen anderen UX Systemen kennen. Die systemweite Installation von Cron-Jobs ändert allerdings eine gemeinsam genutzte Ressource (die crontab Datei) und sollte deshalb auch nicht automatisch über ein Skript angepasst werden. Diesen Nachteil hat **launchd** nicht, da hier lediglich Agents bzw. Daemons als XML Beschreibung hinzugefügt und auch einfach wieder gelöscht werden können. Ob ihr jetzt auf **launchd** umstellt oder weiter bei **crond** bleibt, ist euch überlassen. In den wieteren Plänen von Apple spielt cron aber keine Rolle mehr.
 
 ## Skripte schreiben
 
-Um Agenten oder Daemons über launchd auszuführen, sollten wir zuerst die entsprechende Skripte schreiben, die dann über **launchd** ausgeführt werden sollen. Hier ändert sich im Vergleich zu **crond** nichts. Die gebräuchlichste Skriptsprache auf macOS ist bash, es geht aber auch mit Python, Perl oder natürlich auch Powershell (wird übrigens am besten über [HomeBrew][1] installiert).
+Um Agenten oder Daemons über launchd auszuführen, sollten wir zuerst die entsprechende Skripte erstellen, die dann über **launchd** regelmäßig ausgeführt werden sollen. Hier ändert sich im Vergleich zu **crond** nichts. Die gebräuchlichste Skriptsprache auf macOS ist bash, es geht aber natürlich auch mit Python, Perl oder natürlich auch Powershell (wird übrigens am besten über [HomeBrew][1] installiert).
 
-Unsere Skripte können wir bei **crond** überall liegen, die Job Beschreibungen müssen an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
+Unsere Skripte können wie bei **crond** überall im Filesystem liegen (`chmod +x` nicht vergessen), die Job Beschreibungen müssen an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
 
 * Job Beschreibung in Form von .plist Dateien, die als Agenten im Namen des angemeldeten Benutzers agieren sollen, müssen in `~/Library/LaunchAgents` gespeichert werden.
 * Umgekehrt gehören Job Beschreibungen, die als Daemon fungieren und unabhängig vom angemeldeten Benutzer systemweit, also mit root Berechtigungen arbeiten, in `/Library/LaunchDaemons`.
@@ -37,7 +37,7 @@ Ein schlecht geschriebenes und angreifbares Skript als Daemon kann als Einfallst
 
 ## Job Definitionen
 
-Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist Dateien in den o.g. Verzeichnissen gespeichert werden. Diese XML-Dateien geben dem Job einen Namen, spezifizieren das Skript, das gestartet werden soll, und geben an, wann das Skript ausgeführt werden soll. Sobald Sie Ihr Skript geschrieben haben, schreiben wir die eine Auftragsdefinition, die das Skript zum richtigen Zeitpunkt startet. Eine solche Auftragsdefinition sieht etwa wie folgt aus:
+Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist Dateien in den o.g. Verzeichnissen gespeichert werden. Diese XML-Dateien geben dem Job einen Namen, spezifizieren das Skript, das gestartet werden soll, und geben an, wann es ausgeführt werden soll. Sobald das Skript geschrieben wurde, erstellen wir eine Auftragsdefinition, die das Skript zum richtigen Zeitpunkt und im gewünschten Interval startet. Eine solche Auftragsdefinition sieht etwa wie folgt aus:
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
