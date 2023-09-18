@@ -43,6 +43,7 @@ Ein schlecht geschriebenes und angreifbares Skript als Daemon kann als Einfallst
 Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist Dateien in den o.g. Verzeichnissen gespeichert werden. Diese XML-Dateien geben dem Job einen Namen, spezifizieren das Skript, das gestartet werden soll, und geben an, wann es ausgeführt werden soll. Sobald das Skript geschrieben wurde, erstellen wir eine Auftragsdefinition, die das Skript zum richtigen Zeitpunkt und im gewünschten Interval startet. Eine solche Auftragsdefinition sieht etwa wie folgt aus:
 
 ~~~xml
+// file: "local.thomas.mybackup.plist"
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -67,6 +68,8 @@ Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist 
   </dict>
 </plist>
 ~~~~
+Beispiel .plist XML
+{:.figcaption}
 
 Der Inhalt wird dann in eine Textdatei mit der Erweiterung **.plist** im richtigen Verzeichnis gespeichert (siehe oben).
 
@@ -82,7 +85,8 @@ Die Auftragsbeschreibung besteht aus einigen wichtigen Teilen (einfach das Beisp
 	* **StartInterval:** Startet den Job alle n Sekunden.
 	* **StartCalendarInterval:** Der Auftrag wird zu einem bestimmten Zeitpunkt und Datum ausgeführt.
 
-Das o.g, Beispiel führt das Skript **/Users/thomas/Scripts/rsync_backup.sh**  am 17. Tag um 1 Stunden und 15 Minuten, jeden 9 Monat (also September) am 0 Wochentag (also Sonntag) aus. Kurz gesagt das Backup wird immer um 1:15am gemacht, wenn der 17. September auf einen Sonntag fällt.
+Das o.g, Beispiel führt das Skript **/Users/thomas/Scripts/rsync_backup.sh**  am 17. Tag um 1 Stunden und 15 Minuten, jeden 9. Monat (also September) am 0. Wochentag (also Sonntag) aus. Kurz gesagt das Backup wird immer um 1:15am gemacht, wenn der 17. September auf einen Sonntag fällt.
+{:.note title="Beispiel"}
 
 Sobald wir das Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird in Zukunft bei jeder Anmeldung automatisch geschehen.
 
