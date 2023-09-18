@@ -43,7 +43,7 @@ Ein schlecht geschriebenes und angreifbares Skript als Daemon kann als Einfallst
 Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist Dateien in den o.g. Verzeichnissen gespeichert werden. Diese XML-Dateien geben dem Job einen Namen, spezifizieren das Skript, das gestartet werden soll, und geben an, wann es ausgeführt werden soll. Sobald das Skript geschrieben wurde, erstellen wir eine Auftragsdefinition, die das Skript zum richtigen Zeitpunkt und im gewünschten Interval startet. Eine solche Auftragsdefinition sieht etwa wie folgt aus:
 
 ~~~xml
-// file: "local.thomas.mybackup.plist"
+// file: 'local.thomas.mybackup.plist'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -68,7 +68,7 @@ Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist 
   </dict>
 </plist>
 ~~~~
-Beispiel .plist XML
+Beispiel local.thomas.mybackup.plist XML
 {:.figcaption}
 
 Der Inhalt wird dann in eine Textdatei mit der Erweiterung **.plist** im richtigen Verzeichnis gespeichert (siehe oben).
