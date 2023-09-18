@@ -19,11 +19,14 @@ comments: false
 
 Obwohl **cron** nach wie vor in macOS enthalten ist und auch noch unterstützt wird, ist **crond** keine von Apple empfohlene Lösung für das automatische Ausführen von Skripten mehr. Der offizielle Nachfolger auf macOS heißt **launchd**.
 
-Cron-Jobs funktionieren nach wie vor wie wir es auch von allen anderen UX Systemen kennen. Die systemweite Installation von Cron-Jobs ändert allerdings eine gemeinsam genutzte Ressource (die crontab Datei) und sollte deshalb auch nicht automatisch über ein Skript angepasst werden. Diesen Nachteil hat **launchd** nicht, da hier lediglich Agents bzw. Daemons als XML Beschreibung hinzugefügt und auch einfach wieder gelöscht werden können. Ob ihr jetzt auf **launchd** umstellt oder weiter bei **crond** bleibt, ist euch überlassen. In den wieteren Plänen von Apple spielt cron aber keine Rolle mehr.
+Cron-Jobs funktionieren nach wie vor wie wir es auch von allen anderen UX Systemen kennen. Die systemweite Installation von Cron-Jobs ändert allerdings eine gemeinsam genutzte Ressource (die crontab Datei) und sollte deshalb auch nicht automatisch über ein Skript angepasst werden. Diesen Nachteil hat **launchd** nicht, da hier lediglich Agents bzw. Daemons als XML Beschreibung hinzugefügt und auch einfach wieder gelöscht werden können. Ob ihr jetzt auf **launchd** umstellt oder weiter bei **crond** bleibt, ist euch überlassen. In den weiteren Plänen von Apple spielt **cron** aber keine Rolle mehr.
 
 ## Skripte schreiben
 
 Um Agenten oder Daemons über launchd auszuführen, sollten wir zuerst die entsprechende Skripte erstellen, die dann über **launchd** regelmäßig ausgeführt werden sollen. Hier ändert sich im Vergleich zu **crond** nichts. Die gebräuchlichste Skriptsprache auf macOS ist bash, es geht aber natürlich auch mit Python, Perl oder natürlich auch Powershell (wird übrigens am besten über [HomeBrew][1] installiert).
+
+Wenn in einem Skript andere System Kommandos verwendet werden sollen, unbedingt darauf achten, dass die Pfade zu den Binaries mit angegeben werden. Aus einem `diskutil list` muss dann im Skript ein `/usr/sbin/diskutil list` werden. Unter **System Settings** -> **Privacy & Security** -> **Full Disk Access** kann es auch nicht Schaden, entsprechende Berechtigungen für die Tools zu vergeben, die z.B. auf die Disks zugreifen sollen.
+{:.note title="Tip am Rande"}
 
 Unsere Skripte können wie bei **crond** überall im Filesystem liegen (`chmod +x` nicht vergessen), die Job Beschreibungen müssen an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
 
@@ -76,7 +79,7 @@ Um zu sehen, was gerade in **launchctl** läuft, können wir `launchctl list` im
 launchctl  list | grep local.mybackup
 ~~~~
 
-Um jetzt den erstellten Agent oder Daemon zu starten, müssen wir ihn in `launchctl` laden, das passiert mit dem folgenden Kommando:
+Um jetzt den erstellten Agent oder Daemon zu verwenden, müssen wir ihn in `launchctl` laden, das passiert mit dem folgenden Kommando:
 
 ~~~~console
 # Agent
@@ -92,7 +95,7 @@ Um den Agent bzw. Daemon wieder zu enfernen, wird folgendes Kommando verwendet:
 launchctl  unload ~/Library/LaunchAgents/local.mybackup.plist
 ~~~~
 
-Wenn wir eine Auftragsdefinition in `launchctl` geladen haben, wird der Agent bzw. Daemon in die **launchd** Warteschlange gestellt und zu dem Zeitpunkt ausgeführt, der in den Startbedingungen angegeben ist. 
+Wenn wir eine Auftragsdefinition in `launchctl` geladen haben, wird der Agent bzw. Daemon in die **launchd** Warteschlange gestellt und zu dem Zeitpunkt ausgeführt, der in den Startbedingungen angegeben ist. Das interessante dabei ist, dass wir unsere Job Definition problemlos in den entsprechenden Ordnern speichern und auch jederzeit ändern können. Solange sie nicht in `launchctl` geladen werden, werden sie auch nicht ausgeführt. Das macht es etwas flexibler als das mit `cron` und der crontab Datei möglich ist.
 
 Wenn wir ein Skript auf jeden Fall sofort uber `launchd` ausführen wollen (natürlich können wir das Skript selbst auch manuell im Terminal ausführen), können wir den Befehl **start** verwenden:
 
@@ -100,7 +103,7 @@ Wenn wir ein Skript auf jeden Fall sofort uber `launchd` ausführen wollen (nat�
 launchctl start local.mybackup
 ~~~~
 
-Dieser Befehl nimmt das Label des Auftrags als Parameter und funktioniert nur, wenn der Auftrag bereits in `launchctl` geladen wurde.
+Dieser Befehl nimmt das Label des Auftrags als Parameter und funktioniert natürlich nur, wenn der Auftrag auch bereits in `launchctl` geladen wurde. Das macht das testen von Skripten über launchd einfacher, denn oft verhalten sich Skripte anders wenn sie direkt im Benutzerkontext ausgeführt werden.
 
 ## Weiterführende Links
 * [Mac crontab: Creating macOS startup jobs with crontab, er, launchd][2]
