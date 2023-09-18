@@ -46,14 +46,25 @@ Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>local.thomas.mybackup</string>
+    <key>Program</key>
+    <string>/Users/thomas/Scripts/rsync_backup.sh</string>
+    <key>StartCalendarInterval</key>
     <dict>
-        <key>Label</key>
-        <string>local.mybackup</string>
-        <key>Program</key>
-        <string>/Users/thomas/Scripts/rsync_backup.sh</string>
-        <key>RunAtLoad</key>
-        <true/>
+        <key>Day</key>
+        <integer>17</integer>
+        <key>Hour</key>
+        <integer>1</integer>
+        <key>Minute</key>
+        <integer>15</integer>
+        <key>Month</key>
+        <integer>9</integer>
+        <key>Weekday</key>
+        <integer>0</integer>
     </dict>
+  </dict>
 </plist>
 ~~~~
 
@@ -70,6 +81,8 @@ Die Auftragsbeschreibung besteht aus einigen wichtigen Teilen (einfach das Beisp
 	* **RunAtLoad:** wird ausgeführt, sobald die Job-Definition geladen ist. Wird nur einmal pro Ladevorgang ausgeführt.
 	* **StartInterval:** Startet den Job alle n Sekunden.
 	* **StartCalendarInterval:** Der Auftrag wird zu einem bestimmten Zeitpunkt und Datum ausgeführt.
+
+Das o.g, Beispiel führt das Skript **/Users/thomas/Scripts/rsync_backup.sh**  am 17. Tag um 1 Stunden und 15 Minuten, jeden 9 Monat (also September) am 0 Wochentag (also Sonntag) aus. Kurz gesagt das Backup wird immer um 1:15am gemacht, wenn der 17. September auf einen Sonntag fällt.
 
 Sobald wir das Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird in Zukunft bei jeder Anmeldung automatisch geschehen.
 
