@@ -19,7 +19,7 @@ comments: false
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-Es gibt unzählige Empfehlungen, wie Windows Updates am besten installiert werden sollen. Mein Ich wollte die Updates jedoch nicht einer "Windows Automatik" überlassen, bin aber auch zu faul um auf jedem System die Windows Updates manuell zu installieren. 
+Es gibt unzählige Empfehlungen, wie Windows Updates am besten installiert werden sollen. Mein Ich wollte die Updates jedoch nicht einer "Windows Automatik" überlassen, bin aber auch zu faul um auf jedem System die Windows Updates manuell zu installieren.
 
 Mal abgesehen davon, dass dieses RDP hopping ja auch ziemlich nervt. In größeren Umgebungen wird sicher eine autmatische Softwareverteilung oder ein WSUS die arbeit übernehmen, aber in kleineren Umgebungen ist ein ziemlicher Aufwand diese Systeme zu betreiben und zu verwalten.
 
@@ -89,7 +89,7 @@ Get-WUList
 
 Abhänging wie aktuell euer System ist, wird eine mehr oder weniger lange Liste angezeigt.
 
-~~~
+~~~console
 ComputerName Status     KB          Size Title
 ------------ ------     --          ---- -----
 TOMSYOGA900  -D-----    KB5024670  104MB 2023-03 .NET 6.0.15 Update for x64 Client (KB5024670)
@@ -118,10 +118,10 @@ Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot
 
 Wer nicht möchte, dass die Maschinen einen "AutoReboot" machen, kann auch die folgenden Optionen verwenden:
 
-* IgnoreReboot 
+* IgnoreReboot
 * ScheduleReboot
 
-Wie ich diese Cmdlets in einem Skript verwende, könnt ihr in meinem [Github Account][3] sehen. Ich habe hier ein kleines Skript geschrieben, welches einfach die verfügbaren Updates herunterlädt, installiert und, falls erforderlich, die Maschine neu startet. Das ganze basiert auf einer Textdatei mit den entsprechenden Hostnamen, die nacheinander abgearbeitet werden.
+Wie ich diese Cmdlets in einem Skript verwende, könnt ihr in meinem [Github Account][2] sehen. Ich habe hier ein kleines Skript geschrieben, welches einfach die verfügbaren Updates herunterlädt, installiert und, falls erforderlich, die Maschine neu startet. Das ganze basiert auf einer Textdatei mit den entsprechenden Hostnamen, die nacheinander abgearbeitet werden.
 
 Das PowerShell Module hat auch die Möglichkeit, schnell und simpel einen erforderlichen Reboot abzufragen. Statt mit Skripten in der Registry zu suchen, geht auch der folgende Aufruf:
 
@@ -132,5 +132,4 @@ Get-WURebootStatus
 Das Kommando gibt **True** zurück, falls noch ein Reboot ansteht. So erspart man sich langes suchen in der Registry.
 
 [1]: https://www.powershellgallery.com/stats/packages
-[2]: /assets/img/article/WUmitPowerShell01.png
-[3]: https://github.com/thomaskrampe/PowerShell/tree/master/Windows/WindowsUpdate 
+[2]: https://github.com/thomaskrampe/PowerShell/tree/master/Windows/WindowsUpdate
