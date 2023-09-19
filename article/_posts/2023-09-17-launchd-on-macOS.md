@@ -176,7 +176,7 @@ Dieser Befehl nimmt das Label des Auftrags als Parameter und funktioniert natür
 * [MacOS ‘launchd’ examples (launchd plist example files)][4]
 * [Apple Developer - Daemons and Services Programming Guide][5]
 
-[1]: https://brew.sh/
+[1]: https://blog.kngstn.eu/article/2022-05-15-homebrew/
 [2]: https://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs/
 [3]: https://alvinalexander.com/mac-os-x/launchd-plist-examples-startinterval-startcalendarinterval/
 [4]: https://alvinalexander.com/mac-os-x/launchd-examples-launchd-plist-file-examples-mac/
