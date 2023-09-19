@@ -68,6 +68,7 @@ Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist 
   </dict>
 </plist>
 ~~~~
+
 **Beispiel:** .plist Datei
 {:.figcaption}
 
@@ -81,14 +82,14 @@ Die Auftragsbeschreibung besteht aus einigen wichtigen Teilen (einfach das Beisp
 
 * **RunAtLoad:** beschreibt, wann das Skript ausgeführt werden soll. Hier gibt es einige verschiedene Optionen:
 
-	* **RunAtLoad:** wird ausgeführt, sobald die Job-Definition geladen ist. Wird nur einmal pro Ladevorgang ausgeführt.
-	* **StartInterval:** Startet den Job alle n Sekunden.
-	* **StartCalendarInterval:** Der Auftrag wird zu einem bestimmten Zeitpunkt und Datum ausgeführt.
+* **RunAtLoad:** wird ausgeführt, sobald die Job-Definition geladen ist. Wird nur einmal pro Ladevorgang ausgeführt.
+* **StartInterval:** Startet den Job alle n Sekunden.
+* **StartCalendarInterval:** Der Auftrag wird zu einem bestimmten Zeitpunkt und Datum ausgeführt.
 
 Das o.g, Beispiel führt das Skript **/Users/thomas/Scripts/rsync_backup.sh**  am 17. Tag um 1 Stunden und 15 Minuten, jeden 9. Monat (also September) am 0. Wochentag (also Sonntag) aus. Kurz gesagt das Backup wird immer um 1:15am gemacht, wenn der 17. September auf einen Sonntag fällt.
 {:.note title="Beispiel"}
 
-Richtig komplex wird es erst, wenn wir zum Beispiel einen Task an jedem Werktag um 1:15am ausführen möchten. Hier zeigt sich dann, dass auch XML so seine Schwächen hat. Für einen Eintrag in der crontab Datei würde dafür folgender Eintrag reichen `15 1 * * 1-5 /Users/thomas/Scripts/rsync_backup.sh > /dev/null 2>&1`. 
+Richtig komplex wird es erst, wenn wir zum Beispiel einen Task an jedem Werktag um 1:15am ausführen möchten. Hier zeigt sich dann, dass auch XML so seine Schwächen hat. Für einen Eintrag in der crontab Datei würde dafür folgender Eintrag reichen `15 1 * * 1-5 /Users/thomas/Scripts/rsync_backup.sh > /dev/null 2>&1`.
 
 In der entsprechenden .plist Datei für launchd müssen wir ein Array anlegen und jeden Tag einzeln mit einem `<dict>` Element aufführen.
 
@@ -125,6 +126,7 @@ In der entsprechenden .plist Datei für launchd müssen wir ein Array anlegen un
   </dict>
 </plist>
 ~~~
+
 **Beispiel:** Task jeden Werktag ausführen
 {:.figcaption}
 
@@ -168,6 +170,7 @@ launchctl start local.mybackup
 Dieser Befehl nimmt das Label des Auftrags als Parameter und funktioniert natürlich nur, wenn der Auftrag auch bereits in `launchctl` geladen wurde. Das macht das testen von Skripten über launchd einfacher, denn oft verhalten sich Skripte anders wenn sie direkt im Benutzerkontext ausgeführt werden.
 
 ## Weiterführende Links
+
 * [Mac crontab: Creating macOS startup jobs with crontab, er, launchd][2]
 * [MacOS launchd plist StartInterval and StartCalendarInterval examples][3]
 * [MacOS ‘launchd’ examples (launchd plist example files)][4]
@@ -175,6 +178,6 @@ Dieser Befehl nimmt das Label des Auftrags als Parameter und funktioniert natür
 
 [1]: https://brew.sh/
 [2]: https://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs/
-[3]: https://alvinalexander.com/mac-os-x/launchd-plist-examples-startinterval-startcalendarinterval/ 
+[3]: https://alvinalexander.com/mac-os-x/launchd-plist-examples-startinterval-startcalendarinterval/
 [4]: https://alvinalexander.com/mac-os-x/launchd-examples-launchd-plist-file-examples-mac/
 [5]: https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html#//apple_ref/doc/uid/10000172i-CH1-SW2
