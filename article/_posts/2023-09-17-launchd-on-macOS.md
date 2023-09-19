@@ -28,7 +28,7 @@ Um Agenten oder Daemons über launchd auszuführen, sollten wir zuerst die entsp
 Wenn in einem Skript andere System Kommandos verwendet werden sollen, unbedingt darauf achten, dass die Pfade zu den Binaries mit angegeben werden. Aus einem `diskutil list` muss dann im Skript ein `/usr/sbin/diskutil list` werden. Unter **System Settings** -> **Privacy & Security** -> **Full Disk Access** kann es auch nicht Schaden, entsprechende Berechtigungen für die Tools zu vergeben, die z.B. auf die Disks zugreifen sollen.
 {:.note title="Tip am Rande"}
 
-Unsere Skripte können wie bei **crond** überall im Filesystem liegen (`chmod +x` nicht vergessen), die Job Beschreibungen müssen an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
+Unsere Skripte können wie bei **crond** überall im Filesystem liegen (`chmod +x` nicht vergessen), ich würde sie aber an einem Ort sammeln z.B. unter `/usr/local/scripts`. Die Job Beschreibungen **_müssen_** aber an zwei verschiedenen Orten gespeichert werden, je nachdem, ob sie als Agenten oder Daemons ausgeführt werden sollen:
 
 * Job Beschreibung in Form von .plist Dateien, die als Agenten im Namen des angemeldeten Benutzers agieren sollen, müssen in `~/Library/LaunchAgents` gespeichert werden.
 * Umgekehrt gehören Job Beschreibungen, die als Daemon fungieren und unabhängig vom angemeldeten Benutzer systemweit, also mit root Berechtigungen arbeiten, in `/Library/LaunchDaemons`.
