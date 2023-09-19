@@ -34,14 +34,13 @@ Meine wesentlichste Eigenschaft ist jedoch die Leidenschaft für neue Technologi
 
 Technology Evangelist, Virtualisierung & Cloud Architekt, Autor, Speaker, Blogger und Vollzeit-Geek mit 20 Jahren Berufserfahrung in großen, weltweit agierenden Unternehmen. Aktuell verantworte ich als Managing Consultant und IT-Architekt den Bereich Virtualisierung und Cloud.  Konzeptionelle Infrastruktur Designs inklusive der entsprechenden TCO und ROI Betrachtungen gehören ebenso zu meinen Tätigkeiten wie Projekt- und Teilprojektleitungen nach PRINCE2. Technische Skills besitze ich hauptsächlich im Bereich Microsoft Serverumgebungen sowie Citrix™ Produkten mit dem Schwerpunkt auf Virtualisierung von Servern und Desktops. Hierfür wurde ich im Jahr 2009 von Citrix™ für meine Expertise als [CTP] (Citrix Technology Professional) und von Parallels im Jahr 2021 zum [VIPP] (Very Important Parallels Professional) ausgezeichnet.
 
+![CTP](/assets/img/article/citrix-technology-professional.png)
+![VIPP](assets/img/article/parallels-vipp.png)
+
 <!--projects-->
 ## Support
 
 <a href="https://www.buymeacoffee.com/thomaskrampe" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-## Get Hydejack PRO
-
-Mit dem [folgenden Link](https://gumroad.com/l/nuOluY) könnt ihr Hydejack Pro mit **30%** Rabatt! Benutzt dafür einfach den Code **QR0TW8M**.
 
 [CTP]: https://www.citrix.com/community/ctp/awardees.html
 [VIPP]: https://www.parallels.com/partners/vipp/#members
