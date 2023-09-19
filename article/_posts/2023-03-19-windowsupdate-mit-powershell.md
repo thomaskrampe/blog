@@ -132,5 +132,5 @@ Get-WURebootStatus
 Das Kommando gibt **True** zurück, falls noch ein Reboot ansteht. So erspart man sich langes suchen in der Registry.
 
 [1]: https://www.powershellgallery.com/stats/packages
-[2]: /assets/img/article/windowsupdates001.png
+[2]: /assets/img/article/WUmitPowerShell01.png
 [3]: https://github.com/thomaskrampe/PowerShell/tree/master/Windows/WindowsUpdate 
