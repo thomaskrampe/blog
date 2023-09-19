@@ -133,9 +133,9 @@ In der entsprechenden .plist Datei für launchd müssen wir ein Array anlegen un
 **Vorteil:** Wir können jede Jobausführung einzeln konfigurieren. \
 **Nachteil:** Viel Schreibarbeit und Fehleranfälligkeit. Am besten einen XML Editor mit Syntaxprüfung benutzen.
 
-Wahrscheinlich auch der Grund, warum ich bei Quick & Dirty Tasks derzeit lieber noch bei cron bleibe.
+Wahrscheinlich auch der Grund, warum ich bei Quick & Dirty Tasks derzeit lieber noch bei **cron** bleibe.
 
-Sobald wir aber entsprechnde Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird dann in Zukunft bei jeder Anmeldung automatisch geschehen.
+Sobald wir aber entsprechende Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird dann in Zukunft bei jeder Anmeldung automatisch geschehen.
 
 Um zu sehen, was gerade in **launchctl** läuft, können wir `launchctl list` im Terminal verwenden. Die Ausgabe kann natürlich mit `grep` gefiltert werden, da sonst die Liste etwas länger ist.
 
