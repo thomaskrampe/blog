@@ -68,7 +68,7 @@ Skripte in **launchd** werden durch Job Definitionen ausgelöst, die als .plist 
   </dict>
 </plist>
 ~~~~
-Beispiel local.thomas.mybackup.plist XML
+**Beispiel:** .plist Datei
 {:.figcaption}
 
 Der Inhalt wird dann in eine Textdatei mit der Erweiterung **.plist** im richtigen Verzeichnis gespeichert (siehe oben).
@@ -88,7 +88,52 @@ Die Auftragsbeschreibung besteht aus einigen wichtigen Teilen (einfach das Beisp
 Das o.g, Beispiel führt das Skript **/Users/thomas/Scripts/rsync_backup.sh**  am 17. Tag um 1 Stunden und 15 Minuten, jeden 9. Monat (also September) am 0. Wochentag (also Sonntag) aus. Kurz gesagt das Backup wird immer um 1:15am gemacht, wenn der 17. September auf einen Sonntag fällt.
 {:.note title="Beispiel"}
 
-Sobald wir das Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird in Zukunft bei jeder Anmeldung automatisch geschehen.
+Richtig komplex wird es erst, wenn wir zum Beispiel einen Task an jedem Werktag um 1:15am ausführen möchten. Hier zeigt sich dann, dass auch XML so seine Schwächen hat. Für einen Eintrag in der crontab Datei würde dafür folgender Eintrag reichen `15 1 * * 1-5 /Users/thomas/Scripts/rsync_backup.sh > /dev/null 2>&1`. 
+
+In der entsprechenden .plist Datei für launchd müssen wir ein Array anlegen und jeden Tag einzeln mit einem `<dict>` Element aufführen.
+
+~~~xml
+<!-- file: 'local.thomas.mybackup.plist' -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>local.thomas.rsyncbackup</string>
+    <key>Program</key>
+    <string>/Users/thomas/Scripts/rsync_backup.sh</string>
+    <key>StartCalendarInterval</key>
+    <array>
+      <dict>
+        <key>Weekday</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>1</integer>
+        <key>Minute</key>
+        <integer>15</integer>
+      </dict>
+     <!-- und so weiter mit Weekday 2 - 4 -->
+      <dict>
+        <key>Weekday</key>
+        <integer>5</integer>
+        <key>Hour</key>
+        <integer>1</integer>
+        <key>Minute</key>
+        <integer>15</integer>
+      </dict>
+    </array>
+  </dict>
+</plist>
+~~~
+**Beispiel:** Task jeden Werktag ausführen
+{:.figcaption}
+
+**Vorteil:** Wir können jede Jobausführung einzeln konfigurieren. \
+**Nachteil:** Viel Schreibarbeit und Fehleranfälligkeit. Am besten einen XML Editor mit Syntaxprüfung benutzen.
+
+Wahrscheinlich auch der Grund, warum ich bei Quick & Dirty Tasks derzeit lieber noch bei cron bleibe.
+
+Sobald wir aber entsprechnde Skripte erstellt und den entsprechenden Agenten an der richtigen Stelle gespeichert haben, müssen wir ihn in **launchctl** laden. Dies wird dann in Zukunft bei jeder Anmeldung automatisch geschehen.
 
 Um zu sehen, was gerade in **launchctl** läuft, können wir `launchctl list` im Terminal verwenden. Die Ausgabe kann natürlich mit `grep` gefiltert werden, da sonst die Liste etwas länger ist.
 
