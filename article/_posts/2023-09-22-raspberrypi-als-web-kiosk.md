@@ -83,7 +83,7 @@ Und damit wären wir auch den Energiespar-Modus los.
 
 Da wir die Desktop-Variante von Raspberry Pi OS verwenden, haben wir das Problem, dass der Bildschirm nach einer bestimmten Zeit der Inaktivität automatisch in den Ruhezustand versetzt wird.
 
-Diese Funktion nennt sich Screen Blanking und muss für unseren Zweck deaktiviert werden. Das geht sowohl grafisch über **Preferences** --> **Raspberry Pi Configuration**. Unter dem Tab **Display** lässt sich dann das Screen Blanking dann deaktivieren.
+Diese Funktion nennt sich Screen Blanking und muss für unseren Zweck deaktiviert werden. Das geht sowohl grafisch über **Preferences** --> **Raspberry Pi Configuration**. Unter dem Tab **Display** lässt sich dann das Screen Blanking deaktivieren.
 
 Der Weg im Terminal ist ähnlich. Zuerst die Raspberry Konfiguration aufrufen:
 
@@ -91,7 +91,7 @@ Der Weg im Terminal ist ähnlich. Zuerst die Raspberry Konfiguration aufrufen:
 sudo raspi-config
 ~~~  
 
-Danach unter **2 Display Options** --> **D4 Screen Blanking** aufrufen und sicherstellen das hier No ausgewählt ist. Die abschließende Meldung sollte dann bestätigen, dass Screen Blanking deaktiviert ist.
+Danach unter **2 Display Options** --> **D4 Screen Blanking** aufrufen und sicherstellen das hier **\<No\>** ausgewählt ist. Die abschließende Meldung sollte dann bestätigen, dass Screen Blanking deaktiviert ist.
 
 ![Screen Blanking deaktivieren](https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/2023-09-22-raspberrypi-als-web-kiosk_01.png)
 
