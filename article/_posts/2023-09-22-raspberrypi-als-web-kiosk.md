@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CRaspberry-Pi - Autostart von Chromium im Vollbild
+title: Raspberry-Pi - Autostart von Chromium im Vollbild
 description: >
   Ein Raspberry Pi als Internet Kiosk zur Anzeige von Dashboards, warum nicht.
 image: 
@@ -17,9 +17,9 @@ comments: false
 
 Nach einigen Monaten habe ich endlich mal wieder einen Raspi aus meiner IoT Kiste rausgekramt, um ihn als Device zur Anzeige einer Website bzw. eines Dashboards zu verwenden. Ich überspringe mal die Basis Installation mit dem neuesten Raspberry Pi OS (aka. Debian Bullseye) und komme gleich zu dem, was mich etwas aufgehalten hat.
 
-## Raspi als Webkiosk
+## Raspberry Pi als Webkiosk
 
-Einen Raspberry komplett sich selbst zu überlassen und als Webkiosk zu verwenden, setzt einiges an Konfiguration voraus. Fangen wir mal mit dem Autostart des Browsers an. Zuerst muss unter `/etc/xdg/autostart/` eine neue Datei mit der Dateiendung `.desktop` angelegt werden.
+Einen Raspberry Pi komplett sich selbst zu überlassen und als Webkiosk zu verwenden, setzt einiges an Konfiguration voraus. Fangen wir mal mit dem Autostart des Browsers an. Zuerst muss unter `/etc/xdg/autostart/` eine neue Datei mit der Dateiendung `.desktop` angelegt werden.
 
 ~~~console
 sudo vi /etc/xdg/autostart/chromium.desktop
@@ -123,7 +123,7 @@ sudo crontab -e
 Eventuell müsst ihr noch euren bevorzugten Text Editor für das bearbeiten der crontab Datei auswählen. Ich mache das mit **Vi** aber es steht auf dem Raspi ja auch **nano** zur Verfügung. Die folgende Zeile in der crontab Datei startet den RaspberryPi jeden morgen um 07:00 Uhr.
 
 ~~~console
-0 7 * * * sudo rebboot >/dev/null 2>&1
+0 7 * * * sudo reboot >/dev/null 2>&1
 ~~~
 
 Wer es etwas komplizierter benötigt, kann sich diese Zeile aber auch Online [generieren][2] lassen.
