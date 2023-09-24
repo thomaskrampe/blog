@@ -11,6 +11,9 @@ image:
     480w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/zsh@0,25x.png
 sitemap: true
 hide_last_modified: true
+categories: [article]
+tag: [macOS]
+comments: false
 ---
 
 Dateien mit LS auflisten, die einem bestimmem Schema entsprechen machen wir ja eigentlich relativ einfach mit dem folgenden Kommando:
