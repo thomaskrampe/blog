@@ -80,6 +80,7 @@ xserver-command=X -s 0 dpms
 Und damit wären wir auch den Energiespar-Modus los.
 
 ## WLAN Power Save
+
 Ja, leider hat der WLAN Controller des Raspberry Pi auch einen Power Save Modus. Wenn eure Netzwerkverbindung per Ethernet Kabel erfolgt, gut. Seid ihr aber über WLAN verbunden, könnte euch so etwas im Log begegnen:
 
 ~~~console
@@ -143,6 +144,23 @@ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 @xset -dpms
 ~~~
 
+## Temperatur
+
+So ein Raspberry kann im laufenden Betrieb ganz schön heiß werden. Es kann also durchaus Sinn machen, die Temperatur so ab und zu zu überwachen. Mit den folgendem kleinen Skript sehen wir die Temperatur der ARM CPU:
+
+~~~console
+cpu=$(</sys/class/thermal/thermal_zone0/temp) && echo "CPU Temperatur ist: $((cpu/1000))C"
+CPU Temperatur ist: 60C
+~~~
+
+Für die GPU macht ihr das mit dem folgenden Kommando:
+
+~~~console
+vcgencmd measure_temp
+~~~
+
+Bis 85 °C ist alles noch ok, danach fängt der Raspberry an, die CPU runter zu regeln, was zu unerwünschten Verhalten führen kann. Wenn euer Raspberry im Betrieb ständig diese Temperaturen erreicht, solltet ihr über einen besseren Kühlkörper bzw. einen Lüfter nachdenken.
+
 ## Optional
 
 Wenn man jetzt so einen Raspberry dauerhaft laufen lässt, ist auch mal ein Reboot ganz nett. In meinem Fall wird eine Website angezeigt, die die Reservierungen des aktuellen Tages darstellt und sich leider nicht selbst aktualisiert. Aus diesem Grund habe ich einen Cron-Job erstellt, der den Raspi jeden morgen bootet (an dem Refresh der Seite arbeite ich noch, das ist aber eine andere Baustelle).
@@ -158,22 +176,6 @@ Eventuell müsst ihr noch euren bevorzugten Text Editor für das bearbeiten der 
 ~~~
 
 Wer es etwas komplizierter benötigt, kann sich diese Zeile aber auch Online [generieren][2] lassen.
-
-## Temperatur
-So ein Raspberry kann im laufenden Betrieb ganz schön heiß werden. Es kann also durchaus Sinn machen, die Temperatur so ab und zu zu überwachen. Mit den folgendem kleinen Skript sehen wir die Temperatur der ARM CPU:
-
-~~~console
-cpu=$(</sys/class/thermal/thermal_zone0/temp) && echo "CPU Temperatur ist: $((cpu/1000))C"
-CPU Temperatur ist: 60C
-~~~
-
-Für die GPU macht ihr das mit dem folgenden Kommando:
-
-~~~console
-vcgencmd measure_temp
-~~~
-
-Bis 85 °C ist alles noch ok, danach fängt der Raspberry an, die CPU runter zu regeln, was zu unerwünschten Verhalten führen kann. Wenn euer Raspberry im Betrieb ständig diese Temperaturen erreicht, solltet ihr über einen besseren Kühlkörper bzw. einen Lüfter nachdenken.
 
 Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich finde, werde ich es gern hier in diesem Artikel ergänzen. Schreibt mir gern, wenn ihr eine bessere oder zusätzliche Lösung habt.
 
