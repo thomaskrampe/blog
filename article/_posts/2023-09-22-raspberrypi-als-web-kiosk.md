@@ -61,11 +61,11 @@ Solltet ihr **SSH** nicht beim Basis-Setup konfiguriert haben, hilft eine Neuins
 
 Das Kommando mit allen Parametern hinter **Exec=** kann man Testweise auch mal im Terminal eingeben, dort sollte es genauso funktionieren und sich ein Chromium öffnen. So kann man z.B. seine Parameter vorher testen. Aber Achtung, aus dem `--kiosk` Mode kommt man, wie vorher erwähnt, eben so einfach nicht mehr heraus.
 
-Peter Beverloo (danke übrigens für den Aufwand) hat übrigens auf seiner [Website][1] "fast" alle Command-Line Paramter für den Chromium aufgelistet. Lasst euch überraschen.
+Peter Beverloo (danke übrigens für den Aufwand) hat übrigens auf seiner [Website][1] "fast" alle Command-Line Parameter für den Chromium aufgelistet. Lasst euch überraschen.
 
 ## Energiesparmodus
 
-Standardmäßig hat der Raspberry ja auch einen Energiesparmodus, diesen benötigen wir hier normalerweise nicht. Um diesen loszuwerden, müssen wir die Datei `/etc/lightdm/lightdm.conf` bearbeiten.
+Standardmäßig hat der Raspberry ja auch einen Energiesparmodus, diesen benötigen wir hier normalerweise für diesen Einsatzzweck nicht. Um diesen loszuwerden, müssen wir die Datei `/etc/lightdm/lightdm.conf` bearbeiten.
 
 ~~~console
 sudo vi /etc/lightdm/lightdm.conf
@@ -128,7 +128,7 @@ Eventuell müsst ihr noch euren bevorzugten Text Editor für das bearbeiten der 
 
 Wer es etwas komplizierter benötigt, kann sich diese Zeile aber auch Online [generieren][2] lassen.
 
-Das sollte im Wesentlichen alles sein. Schreibt mir gern wenn ihr eine bessere Lösung habt.
+Das sollte im Wesentlichen alles sein. Schreibt mir gern, wenn ihr eine bessere Lösung habt.
 
 [1]: https://peter.sh/experiments/chromium-command-line-switches/
 [2]: https://crontab-generator.org/
