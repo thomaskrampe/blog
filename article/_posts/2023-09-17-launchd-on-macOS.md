@@ -8,7 +8,7 @@ image:
 sitemap: true
 hide_last_modified: true
 categories: [article]
-tag: [Apple]
+tag: [macOS]
 comments: false
 ---
 
