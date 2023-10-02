@@ -28,6 +28,7 @@ sudo vi /etc/xdg/autostart/chromium.desktop
 Folgender Inhalt kommt dann in diese Datei:
 
 ~~~console
+REM file: 'chromium.desktop'
 [Desktop Entry]
 Type=Application
 Name=Chromium
@@ -169,7 +170,7 @@ Wenn man jetzt so einen Raspberry dauerhaft laufen lässt, ist auch mal ein Rebo
 sudo crontab -e
 ~~~
 
-Eventuell müsst ihr noch euren bevorzugten Text Editor für das bearbeiten der crontab Datei auswählen. Ich mache das mit **Vi** aber es steht auf dem Raspi ja auch **nano** zur Verfügung. Die folgende Zeile in der crontab Datei startet den RaspberryPi jeden morgen um 07:00 Uhr.
+Eventuell müsst ihr noch euren bevorzugten Text Editor für das Bearbeiten der crontab Datei auswählen. Ich mache das mit **vi** bzw. mit **vim** (`sudo apt install vim`) aber es steht auf dem Raspi ja auch **nano** zur Verfügung. Die folgende Zeile in der crontab Datei startet den Raspberry Pi jeden morgen um 07:00 Uhr.
 
 ~~~console
 0 7 * * * sudo reboot >/dev/null 2>&1
