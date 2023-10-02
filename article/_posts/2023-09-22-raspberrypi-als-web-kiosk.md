@@ -187,7 +187,7 @@ Das zweite Problem ist der Mauszeiger, der immer schön zentriert auf dem Bildsc
 
 Beide Probleme sind relativ einfach zu lösen und ich habe dabei noch einen ganz anderen Weg gefunden, wie das mit dem "Kiosk" auch realisiert werden kann.
 
-### Download
+### Tools
 
 Um die vorgenannten Probleme zu lösen, brauchen wir zwei zusätzliche Tools. Eines um den Mauszeiger auszublenden und eines um Chrome und das Error Handling zu kontollieren. Fangen wir mit der Installation der Tools an:
 
@@ -237,15 +237,16 @@ chmod u+x ~/kiosk.sh
 ~~~
 
 ### Mehrere Tabs
-Natürlich können wir Chromium auch mit mehreren Webseiten starten, die dann in Tabs dargestellt werden. Allerdings wird im Vollbild nur ein Tab dargestellt und wir müssen nach einer Möglichkeit suchen, zeitgesteuert durch die geöffneten Tabs zu navigieren.
 
-Dafür können wir das folgende Tool installieren:
+Natürlich können wir Chromium auch mit mehreren Webseiten starten, die dann in Tabs dargestellt werden. Allerdings wird im Vollbild bzw. Kiosk Modus nur der erste Tab dargestellt, alle anderen sind hier unsichtbar. Wir benötigen also eine Möglichkeit um per emulierten Tastenkommandos am besten auch zeitgesteuert durch die geöffneten Tabs zu navigieren.
+
+Dafür gibt es das folgende Tool, das wir wie folgt installieren:
 
 ~~~console
 sudo apt install xdotool
 ~~~
 
-Um jetzt zeitgesteuert durch die geöffneten Tabs zu navigieren, müssen wir die folgende Schleife an das Ende unseres `kiosk.sh` Skript schreiben:
+Um jetzt zeitgesteuert durch die geöffneten Tabs zu navigieren, müssen wir nur die folgende Schleife an das Ende unseres `kiosk.sh` Skript schreiben:
 
 ~~~console
 while true; do
@@ -254,7 +255,7 @@ while true; do
 done
 ~~~
 
-Die Tastenkombination um durch die Tabs zu navigieren ist CTRL + Page Down. In diesem Fall ist **Next** einfach nur ein Alias für Page Down bzw. PGDN. Was die Schleife macht ist lediglich CTRL+PG DN zu drücken, das ganze wieder loszulassen und dann 15 Sekunden zu schlafen. 
+Die Tastenkombination um durch die Tabs zu navigieren ist CTRL + Page Down. In diesem Fall ist **Next** einfach nur ein Alias für Page Down bzw. PGDN. Was die Schleife macht ist also lediglich CTRL+PG DN zu drücken, das ganze auch wieder loszulassen. Danach geht das Script in einen 15 Sekunden Schlaf um dann wieder von vorn zu beginnen, also hinter dem `do`. Deshalb ist es wichtig, die Schleife am Ende des Skript zu patzieren, denn es ist eine sogenannte Endlosschleife und es würden nach dem `done` keine weiteren Kommandos mehr ausgeführt werden.
 
 Alternativ würde auch die Tastenkombination CTRL + r gehen, das würde einen Refresh der Seite durchführen.
 {:.note title="Kleiner Tip"}
