@@ -181,7 +181,7 @@ Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich 
 
 ## Update Oktober 2023
 
-Im Betrieb habe ich festgestellt, dass es doch noch ein paar Dinge gibt die mich stören. Sollte der automatische Reboot aus irgendwelchen Gründen nicht funktionieren, wird der Raspberry bei uns einfach durch Aus- und wieder Einschalten neu gestartet (da im Kiosk Einsatz keine Maus oder Tastatur angeschlossen ist). Das hat zur Folge, dass Chromium eine "abgebrochene" Session in seinen Preference File schreibt und beim nächsten Start mit einer Fehlermeldung startet. Leider muss das manuell bestätigt werden, sonst geht es leider nicht weiter.
+Im Betrieb habe ich festgestellt, dass es doch noch ein paar Dinge gibt die mich stören. Sollte der automatische Reboot aus irgendwelchen Gründen nicht funktionieren, wird der Raspberry bei uns einfach durch Aus- und wieder Einschalten neu gestartet (da im Kiosk Einsatz keine Maus oder Tastatur angeschlossen ist). Das hat zur Folge, dass Chromium eine "abgebrochene" Session in seinen Preference File schreibt und beim nächsten Start mit einer Fehlermeldung startet. Leider muss das manuell bestätigt werden, sonst geht es nicht weiter.
 
 Das zweite Problem ist der Mauszeiger, der immer schön zentriert auf dem Bildschirm angezeigt wird und ehrlich gesagt schrecklich nervt.
 
@@ -217,15 +217,15 @@ sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/$USER/.config/chrom
 
 ~~~
 
-Statt wie bereits oben im Artikel erwähnt eine chromium.desktop Datei in den Autostart zu legen, führe ich hier später einfach das Shell Skript als Service aus. Aber kommen wir zum Inhalt:
+Statt wie bereits oben im Artikel erwähnt eine chromium.desktop Datei in den Autostart zu legen, führe ich hier später einfach das Shell Skript als Service aus. Aber kommen wir erstmal zum Inhalt:
 
-Die ersten drei xset Kommandos habe ich vorher auch bereits verwendet, nur das ich sie jetzt direkt im Skript bei jedem Reboot ausführe. Die ersten beiden xset Kommandos deaktivieren den Bildschirmschoner und die dritte Zeile deaktiviert das **Display Power Management System (dpms)**.
+Die ersten drei `xset` Kommandos habe ich vorher auch bereits verwendet, nur das ich sie jetzt direkt im Skript bei jedem Reboot ausführe. Die ersten beiden xset Kommandos deaktivieren den Bildschirmschoner und die dritte Zeile deaktiviert das **Display Power Management System (dpms)**.
 
 Danach führe ich `unclutter` aus. Diese Anwendung blendet den Mauszeiger aus, wenn er länger als 1 Sekunde inaktiv ist. Der Parameter `-root` entfernt den Mauszeiger auch dann, wenn er sich nicht über dem Browserfenster befindet. Das `&` sorgt nur dafür, dass es im Skript weitergeht.
 
 Den Inaktivitäts-Timer können wir auf die gewünschte Anzahl von Sekunden einstellen, wobei jede Dezimalstelle ein Bruchteil einer Sekunde ist (z.B 1.5 = 1,5 Sekunden usw.).
 
-Zum Schluss verwenden wir `sed` um in der Datei **Preference** des Chromium nach Flags für eine Warnung etc. zu suchen und diese zu entfernen. Wir suchen hier nach **exited_cleanly:false** und ersetzen das durch **exited_cleanly:true** und nach **exit_type:Crashed** und ersetzen das durch **exit_type:Normal**. Simpel, oder?
+Zum Schluss verwenden wir `sed` um in der Datei **Preference** des Chromium Browsers nach Flags für eine Warnung zu suchen und diese zu entfernen. Wir suchen hier nach **exited_cleanly:false** und ersetzen das durch **exited_cleanly:true** und nach **exit_type:Crashed** und ersetzen das durch **exit_type:Normal**. Simpel, oder?
 
 Nachdem die Datei *"aufgeräumt"* ist,  starten wir dann Chromium mit der gewünschten Website. Das Kommando und die Parameter habe ich bereits weiter oben im Artikel erläutert.
 
@@ -236,12 +236,13 @@ chmod u+x ~/kiosk.sh
 ~~~
 
 ### Der neue Autostart
-Statt das ganze per chromium.desktop Datei in den Autostart zu legen, erstelle ich jetzt einen Service. Dazu müssen wir einen .service File mit folgendem Inhalt erstellen.
+Statt das ganze per chromium.desktop Datei in den Autostart zu legen, erstelle ich jetzt einen Service. Dazu müssen wir einen `.service` File mit folgendem Inhalt erstellen:
 
 ~~~console
 sudo vi /lib/systemd/system/kiosk.service
 ~~~
 
+**Inhalt:**
 ~~~console
 [Unit]
 Description=Chromium Kiosk
@@ -261,7 +262,7 @@ Group=thomas
 WantedBy=graphical.target
 ~~~
 
-Interessant sind hier nur die Zeilen unter **[Service]**. Wenn ihr nur einen Bildschirm angeschlossen habt, sollte der Parameter `DISPLAY=:0.0` passen. Habt ihr jedoch mehrere Displays angeschlossen, müssen wir mit `echo $DISPLAY` erst noch das entsprechende Display ermitteln und dann entsprechend hinter `DISPLAY=` eintragen.
+Interessant sind hier nur die Zeilen unter **[Service]**, alles andere einfach so übernehmen. Wenn ihr nur einen Bildschirm angeschlossen habt, sollte der Parameter `DISPLAY=:0.0` passen. Habt ihr jedoch mehrere Displays angeschlossen, müssen wir mit `echo $DISPLAY` erst noch das entsprechende Display ermitteln und dann entsprechend hinter `DISPLAY=` eintragen.
 
 In dem Beispiel wird auch überall der Benutzer **thomas** mit der Gruppe **thomas** verwendet. Das muss natürlich durch euren Benutzer (auch in den Pfaden) ersetzt werden. Danach die Datei einfach speichern.
 
@@ -280,7 +281,7 @@ sudo systemctl start kiosk.service
 Wenn ihr den Zustand des Service überprüfen wollt, ganz besonders dann, wenn der Service nicht startet hilft das folgenden Kommando:
 
 ~~~console
-sudo systemctl start kiosk.service
+sudo systemctl status kiosk.service
 ~~~
 
 Das Ergebniss sollte in etwa das folgende Anzeigen:
@@ -311,6 +312,8 @@ Exec=chromium-browser --noerrdialogs --disable-crash-reporter --disable-infobars
 ~~~console
 Exec=/bin/bash /home/thomas/kiosk.sh
 ~~~
+
+Aber das überlasse ich euch.
 
 [1]: https://peter.sh/experiments/chromium-command-line-switches/
 [2]: https://crontab-generator.org/
