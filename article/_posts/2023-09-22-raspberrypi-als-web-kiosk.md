@@ -179,5 +179,138 @@ Wer es etwas komplizierter benötigt, kann sich diese Zeile aber auch Online [ge
 
 Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich finde, werde ich es gern hier in diesem Artikel ergänzen. Schreibt mir gern, wenn ihr eine bessere oder zusätzliche Lösung habt.
 
+## Update Oktober 2023
+
+Im Betrieb habe ich festgestellt, dass es doch noch ein paar Dinge gibt die mich stören. Sollte der automatische Reboot aus irgendwelchen Gründen nicht funktionieren, wird der Raspberry bei uns einfach durch Aus- und wieder Einschalten neu gestartet (da im Kiosk Einsatz keine Maus oder Tastatur angeschlossen ist). Das hat zur Folge, dass Chromium eine "abgebrochene" Session in seinen Preference File schreibt und beim nächsten Start mit einer Fehlermeldung startet. Leider muss das manuell bestätigt werden, sonst geht es leider nicht weiter.
+
+Das zweite Problem ist der Mauszeiger, der immer schön zentriert auf dem Bildschirm angezeigt wird und ehrlich gesagt schrecklich nervt.
+
+Beide Probleme sind relativ einfach zu lösen und ich habe dabei noch einen ganz anderen Weg gefunden, wie das mit dem "Kiosk" auch realisiert werden kann.
+
+### Download
+
+Um die vorgenannten Probleme zu lösen, brauchen wir zwei zusätzliche Tools. Eines um den Mauszeiger auszublenden und eines um Chrome und das Error Handling zu kontollieren. Fangen wir mit der Installation der Tools an:
+
+~~~console
+sudo apt install unclutter sed
+~~~
+
+Das Toll `unclutter` sorgt dafür, dass wir den Mauszeiger ausblenden wenn die Maus nicht verwendet wird. Mit `sed` durchsuchen wir die Chromium-Einstellungsdatei um alle Flags zu löschen, die die Warnleiste erscheinen lassen würden. Genau das, was ein Reboot per Stromkabel auslösen würde.
+
+Falls Chromium jemals abstürzt oder plötzlich geschlossen wird (was auch bei einem Hard-Reboot passiert), stellen wir mit `sed` sicher, dass wir nicht zu Maus und Tastatur greifen müssen, um die Warnleiste zu löschen, die normalerweise dann oben im Browser erscheint.
+
+Die ganzen Anweisungen packen wir jetzt in ein Shell Skript, dass wir mit folgendem Komando anlegen `vi kiosk.sh` (wer lieber nano verwendet dann natürlich `nano kiosk.sh`). Das Skript hat dann folgenden Inhalt:
+
+~~~console
+#!/bin/bash
+
+xset s noblank
+xset s off
+xset -dpms
+
+unclutter -idle 1 -root &
+
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/$USER/.config/chromium/Default/Preferences
+sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/$USER/.config/chromium/Default/Preferences
+
+/usr/bin/chromium-browser --noerrdialogs --disable-crash-reporter --disable-infobars --force-device-scale-factor=1.00 --start-fullscreen https://www.dashboard.org &
+
+~~~
+
+Statt wie bereits oben im Artikel erwähnt eine chromium.desktop Datei in den Autostart zu legen, führe ich hier später einfach das Shell Skript als Service aus. Aber kommen wir zum Inhalt:
+
+Die ersten drei xset Kommandos habe ich vorher auch bereits verwendet, nur das ich sie jetzt direkt im Skript bei jedem Reboot ausführe. Die ersten beiden xset Kommandos deaktivieren den Bildschirmschoner und die dritte Zeile deaktiviert das **Display Power Management System (dpms)**.
+
+Danach führe ich `unclutter` aus. Diese Anwendung blendet den Mauszeiger aus, wenn er länger als 1 Sekunde inaktiv ist. Der Parameter `-root` entfernt den Mauszeiger auch dann, wenn er sich nicht über dem Browserfenster befindet. Das `&` sorgt nur dafür, dass es im Skript weitergeht.
+
+Den Inaktivitäts-Timer können wir auf die gewünschte Anzahl von Sekunden einstellen, wobei jede Dezimalstelle ein Bruchteil einer Sekunde ist (z.B 1.5 = 1,5 Sekunden usw.).
+
+Zum Schluss verwenden wir `sed` um in der Datei **Preference** des Chromium nach Flags für eine Warnung etc. zu suchen und diese zu entfernen. Wir suchen hier nach **exited_cleanly:false** und ersetzen das durch **exited_cleanly:true** und nach **exit_type:Crashed** und ersetzen das durch **exit_type:Normal**. Simpel, oder?
+
+Nachdem die Datei *"aufgeräumt"* ist,  starten wir dann Chromium mit der gewünschten Website. Das Kommando und die Parameter habe ich bereits weiter oben im Artikel erläutert.
+
+Jetzt müssen wir das Skript noch speichern (`:wg` bei vi oder vim `CTRL + X` bei nano) und es ausführbar machen:
+
+~~~console
+chmod u+x ~/kiosk.sh
+~~~
+
+### Der neue Autostart
+Statt das ganze per chromium.desktop Datei in den Autostart zu legen, erstelle ich jetzt einen Service. Dazu müssen wir einen .service File mit folgendem Inhalt erstellen.
+
+~~~console
+sudo vi /lib/systemd/system/kiosk.service
+~~~
+
+~~~console
+[Unit]
+Description=Chromium Kiosk
+Wants=graphical.target
+After=graphical.target
+
+[Service]
+Environment=DISPLAY=:0.0
+Environment=XAUTHORITY=/home/thomas/.Xauthority
+Type=simple
+ExecStart=/bin/bash /home/thomas/kiosk.sh
+Restart=on-abort
+User=thomas
+Group=thomas
+
+[Install]
+WantedBy=graphical.target
+~~~
+
+Interessant sind hier nur die Zeilen unter **[Service]**. Wenn ihr nur einen Bildschirm angeschlossen habt, sollte der Parameter `DISPLAY=:0.0` passen. Habt ihr jedoch mehrere Displays angeschlossen, müssen wir mit `echo $DISPLAY` erst noch das entsprechende Display ermitteln und dann entsprechend hinter `DISPLAY=` eintragen.
+
+In dem Beispiel wird auch überall der Benutzer **thomas** mit der Gruppe **thomas** verwendet. Das muss natürlich durch euren Benutzer (auch in den Pfaden) ersetzt werden. Danach die Datei einfach speichern.
+
+Jetzt müssen wir dem System natürlich den neuen Service noch bekannt machen, das erledigen wir mit dem folgenden Kommando:
+
+~~~console
+sudo systemctl enable kiosk.service
+~~~
+
+Damit wird der "Service" jetzt bei jedem Reboot das Raspberry Pi gestartet. Um das zu testen, könnt ihr natürlich den Raspberry rebooten oder ihr startet den Dienst manuell mit dem folgenden Kommando:
+
+~~~console
+sudo systemctl start kiosk.service
+~~~
+
+Wenn ihr den Zustand des Service überprüfen wollt, ganz besonders dann, wenn der Service nicht startet hilft das folgenden Kommando:
+
+~~~console
+sudo systemctl start kiosk.service
+~~~
+
+Das Ergebniss sollte in etwa das folgende Anzeigen:
+
+~~~console
+Loaded: loaded ...
+Active: active (running) ...
+
+...
+~~~
+
+Zusätzlich gibt es dann noch Informationen zur CPU Nutzung etc., oder es steht ein entsprechender Fehler in der Augsgabe. Diesen müsst ihr dann zuerst beheben. Meist sind es aber nur Tippfehler oder einer der Pfade stimmt auf eurem System nicht so wie in meinem Beispiel.
+
+Natürlich lässt sich der Service auch stoppen:
+
+~~~console
+sudo systemctl stop kiosk.service
+~~~
+
+Ich hoffe ihr habt den Artikel bis zum Ende gelesen. Den Update Teil finde ich deutlich besser und habe das auch so implemetiert. Natürlich könnt ihr auch beim ersten Teil bleiben, ihr müsst nur sicherstellen, dass ihr die unclutter und sed Kommandos vor dem Start von Chrome ausführt. Ich würde in dem Fall auch das hier beschrieben kiosk.sh Skript nehmen und es in der Datei `/etc/xdg/autostart/chromium.desktop` mit der Anweisung Exec ausführen. Also statt ...
+
+~~~console
+Exec=chromium-browser --noerrdialogs --disable-crash-reporter --disable-infobars --force-device-scale-factor=1.00 --start-fullscreen "https://www.dashboard.org"
+~~~
+
+...würde ich dann folgendes verwenden:
+
+~~~console
+Exec=/bin/bash /home/thomas/kiosk.sh
+~~~
+
 [1]: https://peter.sh/experiments/chromium-command-line-switches/
 [2]: https://crontab-generator.org/
