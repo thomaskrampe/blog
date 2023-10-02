@@ -164,6 +164,7 @@ Bis 85 °C ist alles noch ok, danach fängt der Raspberry an, die CPU runter zu 
 
 ## Optional
 
+### Automatischer Reboot
 Wenn man jetzt so einen Raspberry dauerhaft laufen lässt, ist auch mal ein Reboot ganz nett. In meinem Fall wird eine Website angezeigt, die die Reservierungen des aktuellen Tages darstellt und sich leider nicht selbst aktualisiert. Aus diesem Grund habe ich einen Cron-Job erstellt, der den Raspi jeden morgen bootet (an dem Refresh der Seite arbeite ich noch, das ist aber eine andere Baustelle).
 
 ~~~console
@@ -177,8 +178,6 @@ Eventuell müsst ihr noch euren bevorzugten Text Editor für das Bearbeiten der 
 ~~~
 
 Wer es etwas komplizierter benötigt, kann sich diese Zeile aber auch Online [generieren][2] lassen.
-
-Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich finde, werde ich es gern hier in diesem Artikel ergänzen. Schreibt mir gern, wenn ihr eine bessere oder zusätzliche Lösung habt.
 
 ## Update Oktober 2023
 
@@ -236,6 +235,29 @@ Jetzt müssen wir das Skript noch speichern (`:wg` bei vi oder vim `CTRL + X` be
 ~~~console
 chmod u+x ~/kiosk.sh
 ~~~
+
+### Mehrere Tabs
+Natürlich können wir Chromium auch mit mehreren Webseiten starten, die dann in Tabs dargestellt werden. Allerdings wird im Vollbild nur ein Tab dargestellt und wir müssen nach einer Möglichkeit suchen, zeitgesteuert durch die geöffneten Tabs zu navigieren.
+
+Dafür können wir das folgende Tool installieren:
+
+~~~console
+sudo apt install xdotool
+~~~
+
+Um jetzt zeitgesteuert durch die geöffneten Tabs zu navigieren, müssen wir die folgende Schleife an das Ende unseres `kiosk.sh` Skript schreiben:
+
+~~~console
+while true; do
+      xdotool keydown ctrl+Next; xdotool keyup ctrl+Next;
+      sleep 15
+done
+~~~
+
+Die Tastenkombination um durch die Tabs zu navigieren ist CTRL + Page Down. In diesem Fall ist **Next** einfach nur ein Alias für Page Down bzw. PGDN. Was die Schleife macht ist lediglich CTRL+PG DN zu drücken, das ganze wieder loszulassen und dann 15 Sekunden zu schlafen. 
+
+Alternativ würde auch die Tastenkombination CTRL + r gehen, das würde einen Refresh der Seite durchführen.
+{:.note title="Kleiner Tip"}
 
 ### Der neue Autostart
 Statt das ganze per chromium.desktop Datei in den Autostart zu legen, erstelle ich jetzt einen Service. Dazu müssen wir einen `.service` File mit folgendem Inhalt erstellen:
@@ -316,7 +338,9 @@ Exec=chromium-browser --noerrdialogs --disable-crash-reporter --disable-infobars
 Exec=/bin/bash /home/thomas/kiosk.sh
 ~~~
 
-Aber das überlasse ich euch.
+Aber das überlasse ich euch. 
+
+Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich finde, werde ich es gern hier in diesem Artikel ergänzen. Schreibt mir gern, wenn ihr eine bessere oder zusätzliche Lösung habt.
 
 [1]: https://peter.sh/experiments/chromium-command-line-switches/
 [2]: https://crontab-generator.org/
