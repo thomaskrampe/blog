@@ -202,7 +202,7 @@ Falls Chromium jemals abstürzt oder plötzlich geschlossen wird (was auch bei e
 Die ganzen Anweisungen packen wir jetzt in ein Shell Skript, dass wir mit folgendem Komando anlegen `vi kiosk.sh` (wer lieber nano verwendet dann natürlich `nano kiosk.sh`). Das Skript hat dann folgenden Inhalt:
 
 ~~~console
-# file: 'kiosk.sh'
+// file: 'kiosk.sh'
 #!/bin/bash
 
 xset s noblank
@@ -245,7 +245,7 @@ sudo vi /lib/systemd/system/kiosk.service
 
 **Inhalt:**
 ~~~console
-# file: 'kiosk.service'
+REM file: 'kiosk.service'
 [Unit]
 Description=Chromium Kiosk
 Wants=graphical.target
