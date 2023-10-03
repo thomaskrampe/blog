@@ -195,7 +195,7 @@ Um die vorgenannten Probleme zu lösen, brauchen wir zwei zusätzliche Tools. Ei
 sudo apt install unclutter sed
 ~~~
 
-Das Toll `unclutter` sorgt dafür, dass wir den Mauszeiger ausblenden wenn die Maus nicht verwendet wird. Mit `sed` durchsuchen wir die Chromium-Einstellungsdatei um alle Flags zu löschen, die die Warnleiste erscheinen lassen würden. Genau das, was ein Reboot per Stromkabel auslösen würde.
+Das Tool `unclutter` sorgt dafür, dass wir den Mauszeiger ausblenden wenn die Maus nicht verwendet wird. Mit `sed` durchsuchen wir die Chromium-Einstellungsdatei um alle Flags zu löschen, die die Warnleiste erscheinen lassen würden. Genau das, was ein Reboot per Stromkabel auslösen würde.
 
 Falls Chromium jemals abstürzt oder plötzlich geschlossen wird (was auch bei einem Hard-Reboot passiert), stellen wir mit `sed` sicher, dass wir nicht zu Maus und Tastatur greifen müssen, um die Warnleiste zu löschen, die normalerweise dann oben im Browser erscheint.
 
@@ -228,9 +228,9 @@ Den Inaktivitäts-Timer können wir auf die gewünschte Anzahl von Sekunden eins
 
 Zum Schluss verwenden wir `sed` um in der Datei **Preference** des Chromium Browsers nach Flags für eine Warnung zu suchen und diese zu entfernen. Wir suchen hier nach **exited_cleanly:false** und ersetzen das durch **exited_cleanly:true** und nach **exit_type:Crashed** und ersetzen das durch **exit_type:Normal**. Simpel, oder?
 
-Nachdem die Datei *"aufgeräumt"* ist,  starten wir dann Chromium mit der gewünschten Website. Das Kommando und die Parameter habe ich bereits weiter oben im Artikel erläutert.
+Nachdem die Datei *"aufgeräumt"* ist, starten wir dann Chromium mit der gewünschten Website. Wir können hier mehrere Websiten getrennt durch ein Leerzeichen angeben, diese werden dann in Tabs geöffnet. Das Kommando und die Parameter habe ich bereits weiter oben im Artikel erläutert.
 
-Jetzt müssen wir das Skript noch speichern (`:wg` bei vi oder vim `CTRL + X` bei nano) und es ausführbar machen:
+Jetzt müssen wir das Skript noch speichern (`:wq` bei vi oder vim `CTRL + X` bei nano) und es ausführbar machen:
 
 ~~~console
 chmod u+x ~/kiosk.sh
@@ -238,7 +238,7 @@ chmod u+x ~/kiosk.sh
 
 ### Mehrere Tabs
 
-Natürlich können wir Chromium auch mit mehreren Webseiten starten, die dann in Tabs dargestellt werden. Allerdings wird im Vollbild bzw. Kiosk Modus nur der erste Tab dargestellt, alle anderen sind hier unsichtbar. Wir benötigen also eine Möglichkeit um per emulierten Tastenkommandos am besten auch zeitgesteuert durch die geöffneten Tabs zu navigieren.
+Wenn wir Chromium mit mehreren Webseiten starten, werden diese, wie bereits erwähnt, in Tabs dargestellt. Allerdings wird im Vollbild bzw. Kiosk Modus nur der erste Tab dargestellt, alle anderen sind hier dummerweise unsichtbar. Wir benötigen also eine Möglichkeit um per emulierten Tastenkommandos, am besten auch zeitgesteuert, durch die geöffneten Tabs zu navigieren.
 
 Dafür gibt es das folgende Tool, das wir wie folgt installieren:
 
