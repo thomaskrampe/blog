@@ -21,7 +21,7 @@ Nach einigen Monaten habe ich endlich mal wieder einen Raspi aus meiner IoT Kist
 
 Einen Raspberry Pi komplett sich selbst zu überlassen und als Webkiosk zu verwenden, setzt einiges an Konfiguration voraus. Fangen wir mal mit dem Autostart des Browsers an. Zuerst muss unter `/etc/xdg/autostart/` eine neue Datei mit der Dateiendung `.desktop` angelegt werden.
 
-~~~console
+~~~shell
 sudo vi /etc/xdg/autostart/chromium.desktop
 ~~~
 
@@ -54,7 +54,7 @@ Ich verwende mit Absicht hier den Parameter `--start-fullscreen` weil ich damit 
 
 Einzige Möglichkeit aus dem Kiosk-Mode wieder heraus zu kommen ist eine Verbindung via SSH (wenn aktiviert) und das folgende Kommando.
 
-~~~console
+~~~shell
 pkill -o chromium
 ~~~
 
@@ -68,7 +68,7 @@ Peter Beverloo (danke übrigens für den Aufwand) hat übrigens auf seiner [Webs
 
 Standardmäßig hat der Raspberry ja auch einen Energiesparmodus, diesen benötigen wir hier normalerweise für diesen Einsatzzweck nicht. Um diesen loszuwerden, müssen wir die Datei `/etc/lightdm/lightdm.conf` bearbeiten.
 
-~~~console
+~~~shell
 sudo vi /etc/lightdm/lightdm.conf
 ~~~
 
@@ -90,19 +90,19 @@ Ja, leider hat der WLAN Controller des Raspberry Pi auch einen Power Save Modus.
 
 Wahrscheinlich ist dann der Power Save Mode Schuld daran, dass eure WLAN Verbindung den Dienst einstellt. Ob dieser Modus aktiviert ist, findet ihr mit dem folgenden Kommando heraus:
 
-~~~console
+~~~shell
 sudo iw wlan0 get power_safe
 ~~~~
 
 Wenn die Ausgabe `Power save: off` ist habt ihr Glück gehabt. Andernfalls müssen wir diesen Modus mit dem folgenden Kommando ausschalten:
 
-~~~console
+~~~shell
 sudo iw wlan0 set power_save off
 ~~~~
 
 Damit nach einem Reboot diese Einstallung auch erhalten bleibt, benöigen wir dieses Kommando noch in der Datei `/etc/rc.local`. Direkt vor dem Kommando `exit 0` schreiben wir dann:
 
-~~~console
+~~~shell
 sudo vi /etc/rc.local
 
 ...
@@ -120,7 +120,7 @@ Diese Funktion nennt sich Screen Blanking und muss für unseren Zweck deaktivier
 
 Der Weg im Terminal ist ähnlich. Zuerst die Raspberry Konfiguration aufrufen:
 
-~~~console
+~~~shell
 sudo raspi-config
 ~~~  
 
@@ -130,11 +130,11 @@ Danach unter **2 Display Options** --> **D4 Screen Blanking** aufrufen und siche
 
 Eigentlich sollte es das gewesen sein. Ich habe jetzt sicherheitshalber auch noch in der Datei `/etc/xdg/lxsession/LXDE-pi/autostart` den Bildschirmschoner durch auskommentieren der Zeile `@screensaver -no-splash`  und drei zusätzlichen Zeilen deaktiviert (so die Theorie).
 
-~~~console
+~~~shell
 sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 ~~~
 
-~~~console
+~~~conf
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 # @xscreensaver -no-splash
@@ -149,14 +149,14 @@ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 
 So ein Raspberry kann im laufenden Betrieb ganz schön heiß werden. Es kann also durchaus Sinn machen, die Temperatur so ab und zu zu überwachen. Mit den folgendem kleinen Skript sehen wir die Temperatur der ARM CPU:
 
-~~~console
+~~~shell
 cpu=$(</sys/class/thermal/thermal_zone0/temp) && echo "CPU Temperatur ist: $((cpu/1000))C"
 CPU Temperatur ist: 60C
 ~~~
 
 Für die GPU macht ihr das mit dem folgenden Kommando:
 
-~~~console
+~~~shell
 vcgencmd measure_temp
 ~~~
 
@@ -168,13 +168,13 @@ Bis 85 °C ist alles noch ok, danach fängt der Raspberry an, die CPU runter zu 
 
 Wenn man jetzt so einen Raspberry dauerhaft laufen lässt, ist auch mal ein Reboot ganz nett. In meinem Fall wird eine Website angezeigt, die die Reservierungen des aktuellen Tages darstellt und sich leider nicht selbst aktualisiert. Aus diesem Grund habe ich einen Cron-Job erstellt, der den Raspi jeden morgen bootet (an dem Refresh der Seite arbeite ich noch, das ist aber eine andere Baustelle).
 
-~~~console
+~~~shell
 sudo crontab -e
 ~~~
 
 Eventuell müsst ihr noch euren bevorzugten Text Editor für das Bearbeiten der crontab Datei auswählen. Ich mache das mit **vi** bzw. mit **vim** (`sudo apt install vim`) aber es steht auf dem Raspi ja auch **nano** zur Verfügung. Die folgende Zeile in der crontab Datei startet den Raspberry Pi jeden morgen um 07:00 Uhr.
 
-~~~console
+~~~shell
 0 7 * * * sudo reboot >/dev/null 2>&1
 ~~~
 
@@ -192,7 +192,7 @@ Beide Probleme sind relativ einfach zu lösen und ich habe dabei noch einen ganz
 
 Um die vorgenannten Probleme zu lösen, brauchen wir zwei zusätzliche Tools. Eines um den Mauszeiger auszublenden und eines um Chrome und das Error Handling zu kontollieren. Fangen wir mit der Installation der Tools an:
 
-~~~console
+~~~shell
 sudo apt install unclutter sed
 ~~~
 
@@ -233,7 +233,7 @@ Nachdem die Datei *"aufgeräumt"* ist, starten wir dann Chromium mit der gewüns
 
 Jetzt müssen wir das Skript noch speichern (`:wq` bei vi oder vim `CTRL + X` bei nano) und es ausführbar machen:
 
-~~~console
+~~~shell
 chmod u+x ~/kiosk.sh
 ~~~
 
@@ -243,13 +243,13 @@ Wenn wir Chromium mit mehreren Webseiten starten, werden diese, wie bereits erw�
 
 Dafür gibt es das folgende Tool, das wir wie folgt installieren:
 
-~~~console
+~~~shell
 sudo apt install xdotool
 ~~~
 
 Um jetzt zeitgesteuert durch die geöffneten Tabs zu navigieren, müssen wir nur die folgende Schleife an das Ende unseres `kiosk.sh` Skript schreiben:
 
-~~~console
+~~~shell
 while true; do
       xdotool keydown ctrl+Next; xdotool keyup ctrl+Next;
       sleep 15
@@ -297,19 +297,19 @@ In dem Beispiel wird auch überall der Benutzer **thomas** mit der Gruppe **thom
 
 Jetzt müssen wir dem System natürlich den neuen Service noch bekannt machen, das erledigen wir mit dem folgenden Kommando:
 
-~~~console
+~~~shell
 sudo systemctl enable kiosk.service
 ~~~
 
 Damit wird der "Service" jetzt bei jedem Reboot das Raspberry Pi gestartet. Um das zu testen, könnt ihr natürlich den Raspberry rebooten oder ihr startet den Dienst manuell mit dem folgenden Kommando:
 
-~~~console
+~~~shell
 sudo systemctl start kiosk.service
 ~~~
 
 Wenn ihr den Zustand des Service überprüfen wollt, ganz besonders dann, wenn der Service nicht startet hilft das folgenden Kommando:
 
-~~~console
+~~~shell
 sudo systemctl status kiosk.service
 ~~~
 
@@ -326,7 +326,7 @@ Zusätzlich gibt es dann noch Informationen zur CPU Nutzung etc., oder es steht 
 
 Natürlich lässt sich der Service auch stoppen:
 
-~~~console
+~~~shell
 sudo systemctl stop kiosk.service
 ~~~
 
