@@ -165,6 +165,7 @@ Bis 85 °C ist alles noch ok, danach fängt der Raspberry an, die CPU runter zu 
 ## Optional
 
 ### Automatischer Reboot
+
 Wenn man jetzt so einen Raspberry dauerhaft laufen lässt, ist auch mal ein Reboot ganz nett. In meinem Fall wird eine Website angezeigt, die die Reservierungen des aktuellen Tages darstellt und sich leider nicht selbst aktualisiert. Aus diesem Grund habe ich einen Cron-Job erstellt, der den Raspi jeden morgen bootet (an dem Refresh der Seite arbeite ich noch, das ist aber eine andere Baustelle).
 
 ~~~console
@@ -201,7 +202,7 @@ Falls Chromium jemals abstürzt oder plötzlich geschlossen wird (was auch bei e
 
 Die ganzen Anweisungen packen wir jetzt in ein Shell Skript, dass wir mit folgendem Komando anlegen `vi kiosk.sh` (wer lieber nano verwendet dann natürlich `nano kiosk.sh`). Das Skript hat dann folgenden Inhalt:
 
-~~~console
+~~~shell
 // file: 'kiosk.sh'
 #!/bin/bash
 
@@ -261,6 +262,7 @@ Alternativ würde auch die Tastenkombination CTRL + r gehen, das würde einen Re
 {:.note title="Kleiner Tip"}
 
 ### Der neue Autostart
+
 Statt das ganze per chromium.desktop Datei in den Autostart zu legen, erstelle ich jetzt einen Service. Dazu müssen wir einen `.service` File mit folgendem Inhalt erstellen:
 
 ~~~console
@@ -268,6 +270,7 @@ sudo vi /lib/systemd/system/kiosk.service
 ~~~
 
 **Inhalt:**
+
 ~~~console
 REM file: 'kiosk.service'
 [Unit]
@@ -339,7 +342,7 @@ Exec=chromium-browser --noerrdialogs --disable-crash-reporter --disable-infobars
 Exec=/bin/bash /home/thomas/kiosk.sh
 ~~~
 
-Aber das überlasse ich euch. 
+Aber das überlasse ich euch.
 
 Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich finde, werde ich es gern hier in diesem Artikel ergänzen. Schreibt mir gern, wenn ihr eine bessere oder zusätzliche Lösung habt.
 
