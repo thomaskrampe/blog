@@ -9,7 +9,7 @@ sitemap: true
 hide_last_modified: true
 categories: [article]
 tag: [macOS]
-comments: false
+comments: true
 ---
 ## Subnet Calculator
 
