@@ -15,7 +15,10 @@ comments: false
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-Nach einigen Monaten habe ich endlich mal wieder einen Raspi aus meiner IoT Kiste rausgekramt, um ihn als Device zur Anzeige einer Website bzw. eines Dashboards zu verwenden. Ich überspringe mal die Basis Installation mit dem neuesten Raspberry Pi OS (aka. Debian Bullseye) und komme gleich zu dem, was mich etwas aufgehalten hat.
+Nach einigen Monaten habe ich endlich mal wieder einen Raspi aus meiner IoT Kiste rausgekramt, um ihn als Device zur Anzeige einer Website bzw. eines Dashboards zu verwenden. Ich überspringe mal die Basis Installation mit dem neuesten Raspberry Pi OS (aka. Debian Bullseye) und komme gleich zu dem, was mich etwas aufgehalten hat. 
+
+> Achtung: Es gibt ein [Update][3] in diesem Artikel. Bitte auch dieses lesen.
+{:.lead}
 
 ## Raspberry Pi als Webkiosk
 
@@ -348,3 +351,4 @@ Das sollte im Wesentlichen alles gewesen sein. Falls ich noch etwas zusätzlich 
 
 [1]: https://peter.sh/experiments/chromium-command-line-switches/
 [2]: https://crontab-generator.org/
+[3]: https://blog.kngstn.eu/article/2023-09-22-raspberrypi-als-web-kiosk/#update-oktober-2023
