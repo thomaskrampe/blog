@@ -4,7 +4,7 @@ title: Subnet Calculator
 description: >
   Subnet-Calculator im Command Line Interface
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/network.jpg
+  path: https://picsur.kngstn.eu/i/394bee97-6cce-4ed1-a1ed-5ea9151f3c6e.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]

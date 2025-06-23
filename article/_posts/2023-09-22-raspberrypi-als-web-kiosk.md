@@ -4,7 +4,7 @@ title: Raspberry-Pi - Autostart von Chromium im Vollbild
 description: >
   Ein Raspberry Pi als Internet Kiosk zur Anzeige von Dashboards, warum nicht.
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/2023-09-22-raspberrypi-als-web-kiosk_1280.png
+  path: https://picsur.kngstn.eu/i/e9a3338e-63da-4d1c-9356-6fcb58ae1fd5.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]

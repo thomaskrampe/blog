@@ -4,11 +4,7 @@ title: Microsoft CA Maintenance
 description: >
   Auch eine Microsoft Zertifizierungsstelle braucht Aufmerksamkeit und Pflege.
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/computer-maintenance.png
-  srcset:
-    1920w: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/computer-maintenance.png
-    960w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/computer-maintenance@0,5.png
-    480w:  https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/computer-maintenance@0,25x.png
+  path: https://picsur.kngstn.eu/i/1f33355c-df10-4281-af4e-adf02eac8fc0.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]

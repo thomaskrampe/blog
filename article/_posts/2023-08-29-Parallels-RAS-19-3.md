@@ -4,7 +4,7 @@ title: Parallels RAS 19.3 Tech-Preview
 description: >
   Das neue Release Parallels RAS 19.3 definiert Image Management neu.
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/2023-08-29-Parallels-RAS-19-3-01.png
+  path: https://picsur.kngstn.eu/i/3e4ea7af-d147-40ff-870b-8d678c4dcfa0.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]

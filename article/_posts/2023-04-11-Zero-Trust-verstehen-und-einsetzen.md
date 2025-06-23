@@ -4,7 +4,7 @@ title: Zero-Trust verstehen und einsetzen
 description: >
   Was bedeutet Zero-Trust und wie lässt sich dieser Ansatz in bestehende Infrastrukturen integrieren.
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/trust-4321822_1920.jpg
+  path: https://picsur.kngstn.eu/i/15e95faf-a541-443b-a697-7c292ca9e4b5.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]

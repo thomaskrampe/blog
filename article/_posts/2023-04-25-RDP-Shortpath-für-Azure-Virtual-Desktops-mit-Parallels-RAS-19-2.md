@@ -4,7 +4,7 @@ title: RDP Shortpath für Azure Virtual Desktops mit Parallels RAS 19.2
 description: >
   Verbindungen zu Azure Virtual Desktops über UDP mit Parallels 19.2 und RDP Shortpath verwenden.
 image: 
-  path: https://datablob.oss.eu-west-0.prod-cloud-ocb.orange-business.com/images/rdp-shortpath-avd1920.png
+  path: https://picsur.kngstn.eu/i/620c2380-37b5-4a31-8dcf-c1b305ba1be7.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]
