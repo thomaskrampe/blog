@@ -4,7 +4,7 @@ title: Windows-Updates mit PowerShell
 description: >
   Leidige Windows Updates mit PowerShell automatisieren.
 image: 
-  path: https://picsur.kngstn.eu/i/8b95718b-9d56-46ba-bb28-f3ec406dda4a.jpg
+  path: https://picsur.kngstn.eu/i/3254b174-0dfb-4b2c-9de1-f5287b0302d2.png
 sitemap: false
 hide_last_modified: true
 categories: [article]

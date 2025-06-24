@@ -4,7 +4,7 @@ title: CAT Alternative für macOS
 description: >
   Wer viel mit Skripten im Terminal arbeitet, wird cat in schön zu schätzen wissen.
 image: 
-  path: https://picsur.kngstn.eu/i/a861ea5e-41d5-42e4-b8b5-159188d9c562.jpg
+  path: https://picsur.kngstn.eu/i/d9f16743-a851-485a-9165-c01e65d01296.jpeg
 sitemap: true
 hide_last_modified: true
 categories: [article]

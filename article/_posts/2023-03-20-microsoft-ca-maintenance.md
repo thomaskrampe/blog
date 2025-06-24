@@ -4,7 +4,7 @@ title: Microsoft CA Maintenance
 description: >
   Auch eine Microsoft Zertifizierungsstelle braucht Aufmerksamkeit und Pflege.
 image: 
-  path: https://picsur.kngstn.eu/i/1f33355c-df10-4281-af4e-adf02eac8fc0.jpg
+  path: https://picsur.kngstn.eu/i/3f95ca48-db02-428d-adf8-32e65fc7aac7.png
 sitemap: true
 hide_last_modified: true
 categories: [article]

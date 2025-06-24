@@ -4,7 +4,7 @@ title: Zero-Trust verstehen und einsetzen
 description: >
   Was bedeutet Zero-Trust und wie lässt sich dieser Ansatz in bestehende Infrastrukturen integrieren.
 image: 
-  path: https://picsur.kngstn.eu/i/15e95faf-a541-443b-a697-7c292ca9e4b5.jpg
+  path: https://picsur.kngstn.eu/i/7cc23d9c-5ce4-4d8a-98c8-6a737b509aa0.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]

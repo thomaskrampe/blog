@@ -4,7 +4,7 @@ title: Subnet Calculator
 description: >
   Subnet-Calculator im Command Line Interface
 image: 
-  path: https://picsur.kngstn.eu/i/394bee97-6cce-4ed1-a1ed-5ea9151f3c6e.jpg
+  path: https://picsur.kngstn.eu/i/ddedc8de-c9be-43c0-98f3-8762d626624f.jpg
 sitemap: true
 hide_last_modified: true
 categories: [article]
