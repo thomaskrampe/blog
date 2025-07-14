@@ -24,7 +24,6 @@ After downloading, start the container with the new image:
 sudo docker compose up -d
 ```
 
-
 **[Update Docker Images & Containers To Latest Version](https://www.mend.io/blog/update-docker-images-and-containers-to-the-latest-version-easily-and-quickly/)**
 
 Container neu starten mit folgenden Kommando:
